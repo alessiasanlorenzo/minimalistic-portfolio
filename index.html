@@ -59,7 +59,7 @@
           <div class="btn-group">
             <div class="btn-group">
               <a
-                href="Alessia Vittoria Sanloreno.pdf"
+                href="Alessia Vittoria Sanlorenzo.pdf"
                 download="CV_Alessia_Vittoria_Sanlorenzo.pdf"
                 class="btn"
                 >Download CV</a
@@ -131,16 +131,37 @@
     </section>
 
     <section class="contact" id="contact">
-      <div class="input-box">
-        <h2 class="section-title">Contact Me</h2>
+      <h2 class="section-title">Contact <span>Me</span></h2>
 
-        <div class="input">
-          <input type="text" placeholder="example@email.com" />
-          <i class="fa-solid fa-envelope"></i>
+      <form
+        action="https://formspree.io/f/IL_TUO_ID"
+        method="POST"
+        class="contact-form"
+      >
+        <div class="contact-container">
+          <div class="contact-inputs">
+            <input type="text" name="name" placeholder="Full Name" required />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email Address"
+              required
+            />
+            <input type="text" name="subject" placeholder="Subject" />
+          </div>
+          <div class="contact-message">
+            <textarea
+              name="message"
+              placeholder="Your Message"
+              required
+            ></textarea>
+          </div>
         </div>
 
-        <div class="btn">Submit</div>
-      </div>
+        <div class="contact-btn-group">
+          <button type="submit" class="btn">Send Message</button>
+        </div>
+      </form>
     </section>
 
     <footer>
