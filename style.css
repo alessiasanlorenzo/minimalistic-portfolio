@@ -61,7 +61,9 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5rem;
+  gap: 2rem; /* <-- ABBASSATO: 5rem era troppo per gli schermi piccoli! */
+  flex-wrap: nowrap !important; /* <-- IL SALVAVITA: vieta rigorosamente di andare a capo */
+  white-space: nowrap; /* <-- AIUTA IL TESTO A NON ROMPERSI */
   background-color: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(8px);
   color: white;
@@ -83,7 +85,8 @@ header {
 
 .nav-links {
   display: flex;
-  gap: 2rem;
+  gap: 1.5rem; /* Abbassato da 2rem per dare più spazio orizzontale */
+  flex-shrink: 0; /* Impedisce alla lista di schiacciarsi e fare danni */
 }
 li a {
   position: relative;
