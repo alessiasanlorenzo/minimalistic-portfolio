@@ -508,3 +508,41 @@ footer ul li a {
     min-height: 150px;
   }
 }
+
+/* --- EFFETTO HEADER SCROLL MOBILE --- */
+@media (max-width: 768px) {
+  /* Preparo l'header per un'animazione fluida */
+  header {
+    transition: all 0.4s ease-in-out;
+  }
+
+  /* Come diventa l'header QUANDO SCORRI (diventa un ovale/pallino) */
+  header.scrolled-nav {
+    background-color: black;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    padding: 0;
+    top: 20px;
+    right: 20px;
+    left: auto;
+    transform: none; /* Annulla la centratura originale per spostarlo a destra */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Nascondo il tuo nome quando è un pallino */
+  header.scrolled-nav .logo {
+    display: none;
+  }
+
+  /* Assicuro che l'icona hamburger sia centrata */
+  header.scrolled-nav #menu-icon {
+    margin: 0;
+    color: white;
+    font-size: 2rem;
+    display: block;
+  }
+}
