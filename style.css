@@ -545,4 +545,42 @@ footer ul li a {
     font-size: 2rem;
     display: block;
   }
+  header.scrolled-nav .nav-links.active {
+    display: flex;
+    position: fixed;
+    top: 85px;
+    right: 20px;
+    left: auto;
+    width: 220px;
+    background-color: rgba(0, 0, 0, 0.95);
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    text-align: left;
+    animation: fedeInDropdown 0.3s ease;
+  }
+  header.scrolled-nav .nav-links.active li {
+    margin-top: 0.8rem; /* Distanza tra i link ridotta */
+    padding: 0.5rem 0;
+  }
+  header.scrolled-nav .nav-links.active li a {
+    color: white; /* Testo bianco */
+    font-weight: 400; /* Font-weight coerente */
+    font-size: 1rem; /* Dimensione font adatta */
+  }
+  header.scrolled-nav .nav-links.active li a::before {
+    height: 3px; /* Sottolineatura più sottile */
+    top: 22px; /* Allineata al testo */
+  }
+  @keyframes fadeInDropDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }
