@@ -646,31 +646,51 @@ li a:hover::before {
 }
 
 /* =========================================
-   7. FOOTER
+   7. FOOTER - Versione Elastica
    ========================================= */
 footer {
-  bottom: 0;
-  left: 0;
-  height: 10rem;
+  /* Rimosso bottom:0 e left:0 che possono dare problemi di posizionamento */
   width: 100%;
+  min-height: 10rem; /* Altezza MINIMA, ma può crescere se serve */
+  padding: 2rem 1rem; /* Spazio interno per non far toccare i bordi */
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5rem;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
 }
+
 footer ul {
   display: flex;
   align-items: center;
-  gap: 3rem;
+  justify-content: center;
+  gap: 2rem; /* Ridotto leggermente per schermi piccoli */
+  flex-wrap: wrap; /* Fondamentale: permette ai link di andare a capo su mobile */
 }
+
 footer ul li a {
   color: black;
   font-weight: 600;
+  transition: 0.3s;
 }
+
+footer ul li a:hover {
+  color: #009dff;
+}
+
 .copyright {
   font-weight: 300;
-  margin-top: 2rem;
+  margin-top: 1rem; /* Ridotto per bilanciare il padding */
+  text-align: center;
+}
+
+/* FIX SPECIFICO PER MOBILE */
+@media (max-width: 600px) {
+  footer ul {
+    gap: 1rem; /* Link più vicini su telefoni mini */
+    flex-direction: column; /* Opzionale: mette i link uno sotto l'altro */
+  }
 }
 
 /* =========================================
