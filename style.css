@@ -408,69 +408,103 @@ footer ul li a {
     gap: 1rem;
   }
 }
+/* --- SEZIONE CONTATTI STILE ALESSIA --- */
+.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8rem 12%;
+}
 
-/* --- Stile Modulo Contatti Alessia --- */
 .contact-form {
-  max-width: 900px;
+  width: 100%;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
+/* Layout a due colonne */
 .contact-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
+  grid-template-columns: 1fr 1fr; /* Divide esattamente a metà */
+  gap: 2rem;
   margin-bottom: 2rem;
 }
 
+/* Colonna sinistra: i tre input */
 .contact-inputs {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
-/* Campi di input e textarea */
+/* Stile comune per Input e Textarea */
 .contact-inputs input,
 .contact-message textarea {
   width: 100%;
   padding: 1.2rem;
   background: transparent;
-  border: 2px solid black; /* Come i tuoi pulsanti e card */
-  border-radius: 1.5rem; /* Arrotondato come il tuo stile */
+  border: 2px solid black; /* Bordo nero come le tue card */
+  border-radius: 1rem; /* Arrotondato */
   font-family: "Poppins", sans-serif;
   font-size: 1rem;
+  color: black;
   outline: none;
   transition: 0.3s ease;
 }
 
-/* Quando l'utente clicca nel campo, appare il tuo gradiente */
-.contact-inputs input:focus,
-.contact-message textarea:focus {
-  border-color: #009dff; /* Uno dei colori del tuo gradiente */
-  box-shadow: 0 0 10px rgba(0, 157, 255, 0.2);
+/* Colonna destra: il messaggio */
+.contact-message {
+  display: flex;
 }
 
 .contact-message textarea {
   height: 100%;
-  min-height: 180px;
+  min-height: 250px;
   resize: none;
 }
 
-/* Centriamo il bottone di invio */
+/* Focus: quando l'utente clicca, usa il tuo gradiente */
+.contact-inputs input:focus,
+.contact-message textarea:focus {
+  border-color: #009dff;
+  box-shadow: 0 0 8px rgba(0, 157, 255, 0.2);
+}
+
+/* Bottone d'invio centrato a sinistra */
 .contact-btn-group {
   display: flex;
-  justify-content: center;
+  justify-content: center; /* Allineato a sinistra come nella foto */
+  width: 100%; /* Assicura che il contenitore occupi tutta la larghezza */
+  margin-top: 1rem;
 }
 
-/* Reset per il tag button per farlo sembrare come i tuoi .btn */
 .contact-btn-group .btn {
   background-color: transparent;
+  color: black;
+  border: 2px solid black;
+  padding: 1rem 3rem;
   font-size: 1.1rem;
-  padding: 0.8rem 3rem;
+  font-weight: 600;
+  border-radius: 3rem;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
 }
 
-/* Mobile Responsive */
+/* Hover del bottone: diventa nero con testo bianco */
+.contact-btn-group .btn:hover {
+  background-color: black !important;
+  color: white !important;
+  transform: scale(1.05);
+}
+
+/* Responsive: su cellulare mette tutto in una colonna */
 @media (max-width: 768px) {
   .contact-container {
     grid-template-columns: 1fr;
+  }
+
+  .contact-message textarea {
+    min-height: 150px;
   }
 }
