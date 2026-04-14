@@ -570,83 +570,91 @@ footer ul li a {
   }
 }
 
-/* Tablet piccolo e smartphone - Menu hamburger */
-@media (max-width: 750px) {
-  .header-btn-pc {
-    display: none;
-  }
-
-  #menu-icon {
-    display: block;
-  }
-
-  .nav-links {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    padding: 2rem;
-    background: rgba(0, 0, 0, 0.95);
-    backdrop-filter: blur(10px);
-    border-radius: 0 0 20px 20px;
-    flex-direction: column;
-    gap: 1.5rem;
-    text-align: center;
-    display: none;
-  }
-
-  .nav-links.active {
-    display: flex;
-  }
-
-  .menu-btn-mobile {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin-top: 2rem;
-  }
-
-  .menu-btn-mobile .visit-btn {
-    display: inline-block;
-    -webkit-appearance: none;
-    appearance: none;
-    margin: 0 auto;
-  }
-}
-
-/* Smartphone - Layout ottimizzato */
+/* =========================================
+   8. MEDIA QUERY UNIFICATA (768px)
+   ========================================= */
 @media (max-width: 768px) {
+  /* --- Layout Generale --- */
   section {
     padding: 5rem 5%;
   }
 
   .section-title {
-    font-size: 2.5rem;
+    font-size: 2.5rem !important;
     width: 100%;
     text-align: center;
+    margin-bottom: 2rem;
   }
 
-  /* Header mobile */
+  /* --- Header & Logo --- */
   header {
-    width: 92%;
-    padding: 0.8rem 1.2rem;
-    gap: 0.5rem;
+    width: 92% !important;
+    padding: 0.8rem 1.2rem !important;
+    gap: 0.5rem !important;
   }
 
   header .logo {
     font-size: 1.1rem;
   }
 
-  /* Experience section */
+  .header-btn-pc {
+    display: none !important; /* Nasconde il bottone PC */
+  }
+
+  #menu-icon {
+    display: block !important; /* Mostra le 3 lineette */
+  }
+
+  /* --- MENU A TENDINA CENTRATO --- */
+  .nav-links {
+    display: none;
+    position: fixed; /* Resta fisso rispetto allo schermo */
+    top: 5.5rem; /* Distanza dall'alto */
+    left: 50%; /* Sposta al centro */
+    transform: translateX(-50%); /* Centratura matematica perfetta */
+    width: 90%; /* Non tocca i bordi */
+    max-width: 400px; /* Larghezza massima per non sballare su tablet */
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    flex-direction: column;
+    gap: 1.5rem;
+    border-radius: 2rem; /* Bolla arrotondata */
+    text-align: center;
+    z-index: 1001;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  }
+
+  .nav-links.active {
+    display: flex !important;
+  }
+
+  .nav-links li {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* --- Bottone dentro il menu --- */
+  .menu-btn-mobile {
+    display: flex !important;
+    justify-content: center;
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  /* --- Sezione Experience --- */
   .experience-info {
     width: 100%;
     margin-bottom: 2rem;
     text-align: center;
+    display: flex;
+    flex-direction: column;
     align-items: center;
   }
 
   .grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
     width: 100%;
     gap: 1.5rem;
   }
@@ -658,7 +666,7 @@ footer ul li a {
     text-align: left;
   }
 
-  /* Inputfix */
+  /* --- Input Fix --- */
   .input-box input {
     padding: 1rem 1.5rem;
     font-size: 1.2rem;
