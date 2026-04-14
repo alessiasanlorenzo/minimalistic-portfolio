@@ -671,23 +671,34 @@ footer ul li a {
   header {
     width: 92%;
     padding: 0.8rem 1.2rem;
+    display: flex !important;
+    justify-content: space-between !important; /* Logo a sinistra, Icona a destra */
+    align-items: center !important;
+  }
+
+  /* Nascondiamo i link desktop e i bottoni extra sulla barra */
+  header .nav-links-container,
+  .nav-menu-desktop,
+  .header-btn-pc {
+    display: none !important;
   }
 
   .logo {
     font-size: 1.1rem;
   }
 
-  .header-btn-pc {
-    display: none;
-  }
-
+  /* Icona hamburger visibile */
   #menu-icon {
-    display: block;
+    display: block !important;
+    cursor: pointer;
+    font-size: 2rem;
+    z-index: 10001;
+    color: white;
   }
 
-  /* Menu a tendina mobile */
+  /* Menu a pillola mobile */
   .nav-links {
-    display: flex;
+    display: flex !important;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
@@ -695,11 +706,15 @@ footer ul li a {
     align-items: center;
     justify-content: center;
     gap: 1.2rem;
-    position: fixed;
+
+    position: fixed !important;
     top: calc(70px + 20px);
     left: 50%;
-    transform: translate(-50%, -20px);
-    -webkit-transform: translate(-50%, -20px);
+
+    /* Stato iniziale ritirato per l'animazione */
+    transform: translate(-50%, -20px) !important;
+    -webkit-transform: translate(-50%, -20px) !important;
+
     width: 85%;
     max-width: 350px;
     margin: 0;
@@ -711,22 +726,19 @@ footer ul li a {
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     z-index: 9999;
-    transition:
-      opacity 0.4s ease,
-      transform 0.4s ease,
-      visibility 0.4s ease;
-    -webkit-transition:
-      opacity 0.4s ease,
-      -webkit-transform 0.4s ease,
-      visibility 0.4s ease;
+
+    /* Transizione fluida Safari-ready */
+    -webkit-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
   }
 
+  /* Quando il menu è aperto */
   .nav-links.active {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transform: translate(-50%, 0);
-    -webkit-transform: translate(-50%, 0);
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transform: translate(-50%, 0) !important;
+    -webkit-transform: translate(-50%, 0) !important;
   }
 
   .nav-links li {
@@ -751,7 +763,7 @@ footer ul li a {
     margin-top: 0.5rem;
   }
 
-  /* Experience grid mobile */
+  /* Griglie e Input Mobile */
   .grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
@@ -761,12 +773,10 @@ footer ul li a {
     padding: 2rem;
   }
 
-  /* Contact mobile */
   .contact-container {
     grid-template-columns: 1fr;
   }
 
-  /* Input mobile */
   .input-box input {
     padding: 1rem 1.5rem;
     font-size: 1.2rem;
@@ -776,42 +786,6 @@ footer ul li a {
     font-size: 1rem;
   }
 }
-
-/* Timeline responsive */
-@media screen and (min-width: 992px) {
-  .timeline-container::after {
-    left: 50%;
-  }
-
-  .timeline-item {
-    width: 50%;
-    padding: 20px 40px;
-  }
-
-  .timeline-item:nth-child(odd) {
-    left: 0;
-    text-align: right;
-    align-items: flex-end;
-    padding-right: 45px;
-  }
-
-  .timeline-item:nth-child(even) {
-    left: 50%;
-    text-align: left;
-    align-items: flex-start;
-    padding-left: 45px;
-  }
-
-  .timeline-item:nth-child(odd) .timeline-icon {
-    right: -8px;
-    left: auto;
-  }
-
-  .timeline-item:nth-child(even) .timeline-icon {
-    left: -8px;
-  }
-}
-
 /* Smartphone piccoli (480px) */
 @media (max-width: 480px) {
   .section-title {
