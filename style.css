@@ -317,43 +317,54 @@ li a:hover::before {
 }
 
 /* =========================================
-   4. SEZIONE EXPERIENCE
+   4. SEZIONE EXPERIENCE - Versione Pulita
    ========================================= */
+
 .experience-info {
-  display: block; /* Non serve più flex se c'è solo un blocco di testo/titolo */
-  text-align: center; /* Centra il titolo della sezione */
-  margin-bottom: 3rem; /* Spazio tra titolo e griglia delle card */
+  text-align: center;
+  margin-bottom: 3rem;
 }
 
 .grid {
   display: grid;
-  /* Crea colonne da almeno 300px, ma se non c'è spazio le mette in colonna da sole */
+  /* Auto-layout: si mette in colonna da solo sotto i 300px circa */
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   width: 100%;
-  max-width: 1100px; /* Evita che le card diventino troppo larghe su schermi giganti */
-  margin: 0 auto; /* Centra la griglia nella pagina */
+  max-width: 1100px;
+  margin: 0 auto;
 }
+
 .grid-card {
   border: 2px solid black;
   border-radius: 3rem;
   padding: 3rem;
   display: flex;
   flex-direction: column;
-  align-items: baseline;
-  justify-content: left;
+  align-items: flex-start; /* Allinea icone e titoli a sinistra */
+  text-align: left; /* Allinea il testo a sinistra */
   cursor: pointer;
   transition: 0.2s ease-in-out;
 }
+
+/* FORZA il testo dentro le card (descrizioni) a stare a sinistra */
+.grid-card p,
+.grid-card div {
+  text-align: left;
+  width: 100%;
+}
+
 .grid-card:hover {
   transform: scale(1.02);
   background-color: black;
   color: white;
 }
+
 .grid-card i {
   font-size: 1.5rem;
   margin-bottom: 1rem;
 }
+
 .grid-card span {
   font-size: 1.5rem;
   font-weight: 500;
@@ -361,26 +372,30 @@ li a:hover::before {
   background-clip: text;
   color: transparent;
 }
+
 /* --- FIX PER MOBILE (Sotto i 768px) --- */
 @media (max-width: 768px) {
   .experience-info {
-    flex-direction: column; /* Mette foto e testo uno sopra l'altro */
-    gap: 2rem; /* Riduce lo spazio tra foto e testo */
-    text-align: center;
-  }
-
-  .experience img {
-    width: 60vw; /* Ingrandisce la foto su mobile rispetto al 24vw */
-    max-width: 250px;
+    text-align: center; /* Titolo centrato (opzionale, puoi mettere left) */
   }
 
   .grid {
-    grid-template-columns: 1fr; /* Forza una sola colonna su mobile */
-    gap: 1.5rem;
+    grid-template-columns: 1fr; /* Una sola card per riga */
+    width: 90%; /* Evita che la card tocchi i bordi del telefono */
+    margin: 0 auto;
   }
 
   .grid-card {
-    padding: 2rem; /* Riduce il padding interno alle card */
+    padding: 2rem;
+    align-items: flex-start !important;
+    text-align: left !important;
+  }
+
+  /* Questo risolve il problema del tuo screenshot su iPhone */
+  .grid-card p,
+  .grid-card span,
+  .grid-card div {
+    text-align: left !important;
   }
 }
 /* =========================================
