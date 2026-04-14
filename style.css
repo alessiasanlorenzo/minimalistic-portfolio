@@ -250,6 +250,7 @@ li a:hover::before {
   .menu-btn-mobile .visit-btn {
     display: inline-block !important;
     -webkit-appearance: none !important;
+    appearance: none !important; /* Versione standard */
     margin: 0 auto;
   }
 }
@@ -319,20 +320,19 @@ li a:hover::before {
    4. SEZIONE EXPERIENCE
    ========================================= */
 .experience-info {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5rem;
-}
-.experience img {
-  width: 24vw;
-  border-radius: 3rem;
+  display: block; /* Non serve più flex se c'è solo un blocco di testo/titolo */
+  text-align: center; /* Centra il titolo della sezione */
+  margin-bottom: 3rem; /* Spazio tra titolo e griglia delle card */
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  /* Crea colonne da almeno 300px, ma se non c'è spazio le mette in colonna da sole */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
+  width: 100%;
+  max-width: 1100px; /* Evita che le card diventino troppo larghe su schermi giganti */
+  margin: 0 auto; /* Centra la griglia nella pagina */
 }
 .grid-card {
   border: 2px solid black;
@@ -361,7 +361,28 @@ li a:hover::before {
   background-clip: text;
   color: transparent;
 }
+/* --- FIX PER MOBILE (Sotto i 768px) --- */
+@media (max-width: 768px) {
+  .experience-info {
+    flex-direction: column; /* Mette foto e testo uno sopra l'altro */
+    gap: 2rem; /* Riduce lo spazio tra foto e testo */
+    text-align: center;
+  }
 
+  .experience img {
+    width: 60vw; /* Ingrandisce la foto su mobile rispetto al 24vw */
+    max-width: 250px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr; /* Forza una sola colonna su mobile */
+    gap: 1.5rem;
+  }
+
+  .grid-card {
+    padding: 2rem; /* Riduce il padding interno alle card */
+  }
+}
 /* =========================================
    5. SEZIONE PROJECTS
    ========================================= */
