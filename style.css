@@ -1,188 +1,292 @@
 /* 1. REGOLE GENERALI (Sempre per prime) */
+
 * {
   margin: 0;
+
   padding: 0;
+
   box-sizing: border-box; /* Fondamentale per evitare che i bordi allarghino le card */
+
   font-family: "Poppins", sans-serif;
+
   text-decoration: none;
+
   scroll-behavior: smooth;
+
   list-style: none;
 }
 
 /* 2. BLOCCO DELLO SCIVOLAMENTO (Subito dopo) */
+
 html,
 body {
   width: 100%; /* Forza la larghezza al 100% */
+
   max-width: 100%; /* Impedisce di superare il bordo dello schermo */
+
   overflow-x: hidden; /* Taglia lo spazio bianco extra a destra */
+
   margin: 0;
+
   padding: 0;
+
   position: relative;
 }
 
 ::-webkit-scrollbar {
   width: 20px;
 }
+
 ::-webkit-scrollbar-track {
   background-color: rgb(219, 219, 219);
 }
+
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(to bottom, #009dff, #ff00ff);
 }
 
 section {
   min-height: 100vh;
+
   padding: 5rem 5%; /*ridotto il padding laterale al 5% per evitare problemi di overflow su mobile*/
+
   width: 100%;
+
   position: relative;
+
   overflow: hidden; /*fondamentale per bloccare elementi che escono fuori dai bordi, come le card experience su mobile*/
+
   box-sizing: border-box;
 }
 
 .section-title {
   text-align: center;
+
   font-size: 4rem;
+
   font-weight: 600;
+
   margin-bottom: 3rem;
 }
 
 .btn {
   border-radius: 3rem;
+
   padding: 0.5rem 1.5rem;
+
   border: 2px solid black;
+
   cursor: pointer;
+
   font-weight: 500;
+
   text-wrap: nowrap;
+
   transition: 0.2s ease-in-out;
+
   color: black;
 }
+
 .btn:hover {
   background-color: black;
+
   color: white;
 }
 
 /* =========================================
-   2. HEADER & NAVIGAZIONE
-   ========================================= */
+
+2. HEADER & NAVIGAZIONE
+
+========================================= */
+
 header {
   position: fixed;
+
   top: 1rem;
+
   left: 50%;
+
   transform: translateX(-50%);
+
   display: flex;
+
   align-items: center;
+
   justify-content: space-between; /* Distribuisce logo e bottone ai lati */
 
   /* FIX PER IL RIMPICCIOLIMENTO */
+
   width: 95%; /* Si adatta sempre alla larghezza dello schermo */
+
   max-width: 1100px; /* Impedisce che diventi troppo largo su monitor grandi */
+
   min-width: auto; /* RIMOSSO 800px: ora può rimpicciolirsi liberamente */
 
   padding: 0.5rem 1.5rem;
+
   background-color: rgba(0, 0, 0, 0.8);
+
   backdrop-filter: blur(8px);
+
   color: white;
+
   border-radius: 3rem;
+
   z-index: 1000;
 
   flex-wrap: nowrap !important; /* Impedisce il salto riga su Chrome/Safari Mac */
+
   white-space: nowrap;
 }
 
 .logo {
   color: white;
+
   font-size: 1.3rem;
+
   font-weight: 600;
+
   text-wrap: nowrap;
+
   transition: 0.3s ease-in-out;
 }
+
 .logo:hover {
   transform: scale(1.1);
 }
 
 .nav-links {
   display: flex;
+
   gap: 1.5rem; /* Spazio tra About, Experience, etc. */
+
   margin: 0 1rem; /* Margine di sicurezza ai lati dei link */
+
   flex-shrink: 1; /* Permette ai link di avvicinarsi se lo schermo stringe */
 }
+
 li a {
   position: relative;
+
   color: white;
+
   font-weight: 300;
 }
+
 li a::before {
   position: absolute;
+
   content: "";
+
   width: 0;
+
   left: 0;
+
   height: 5px;
+
   top: 25px;
+
   border-radius: 1rem;
+
   transition: 0.3s ease-in-out;
+
   background: linear-gradient(to right, rgb(0, 157, 255), rgb(255, 0, 255));
 }
+
 li a:hover::before {
   width: 100%;
 }
 
 .visit-btn {
   padding: 0.8rem 1.5rem;
+
   border-radius: 3rem;
+
   border: none;
+
   font-weight: 500;
+
   font-size: 1rem;
+
   color: white;
+
   cursor: pointer;
+
   text-wrap: nowrap;
+
   transition: 0.3s ease-in-out;
+
   background: linear-gradient(to right, rgb(0, 157, 255), rgb(255, 0, 255));
 }
+
 .visit-btn:hover {
   background: linear-gradient(to right, rgb(255, 0, 255), rgb(0, 157, 255));
+
   transform: scale(1.03);
 }
+
 /* Stile forzato per il bottone GitHub dentro il menù a tendina */
+
 .nav-links li .visit-btn {
   background: linear-gradient(
     to right,
+
     rgb(0, 157, 255),
     rgb(255, 0, 255)
   ) !important;
+
   color: white !important;
+
   border: none !important;
+
   padding: 0.8rem 1.5rem !important;
+
   border-radius: 3rem !important;
+
   font-weight: 500 !important;
+
   font-size: 1rem !important;
+
   cursor: pointer;
+
   font-family: inherit;
 }
 
 .nav-links li .visit-btn:hover {
   background: linear-gradient(
     to right,
+
     rgb(255, 0, 255),
     rgb(0, 157, 255)
   ) !important;
+
   transform: scale(1.03) !important;
+
   transition: 0.3s ease-in-out;
 }
+
 #menu-icon {
   font-size: 2rem;
+
   display: none;
 }
+
 /* =========================================
-   FIX DEFINITIVO (PC WRAP & SAFARI iOS)
-   ========================================= */
+
+FIX DEFINITIVO (PC WRAP & SAFARI iOS)
+
+========================================= */
 
 /* --- Impediamo all'header di andare a capo --- */
+
 .header {
   flex-wrap: nowrap !important;
+
   white-space: nowrap;
 }
 
 /* --- 1. REGOLE PER IL PC (Schermo grande) --- */
+
 .menu-btn-mobile {
   display: none !important;
 }
@@ -194,10 +298,13 @@ li a:hover::before {
 /* --- 2. REGOLE MOBILE & TABLET --- */
 
 /* --- STEP INTERMEDIO: Spremiamo l'header al massimo --- */
+
 @media (max-width: 1150px) {
   header {
     gap: 0.5rem; /* Spazio ridotto all'osso tra le tre sezioni */
+
     width: 98%; /* Sfrutta tutto lo schermo disponibile */
+
     padding: 0.4rem 1rem;
   }
 
@@ -211,526 +318,805 @@ li a:hover::before {
 
   .header-btn-pc {
     padding: 0.4rem 1rem; /* Rimpicciolisce il bottone */
+
     font-size: 0.9rem;
   }
 }
+
 /* Aumentiamo la soglia a 1400px: il menù scatta PRIMA che la barra si sballi! */
+
 @media (max-width: 750px) {
   /* 1. Nascondiamo il bottone della barra PC */
+
   .header-btn-pc {
     display: none !important;
   }
 
   /* 2. Mostriamo l'icona del menu (le 3 lineette) */
+
   #menu-icon {
     display: block !important;
   }
 
   /* 3. TRASFORMAZIONE MENU: Nascondiamo i link orizzontali */
+
   .nav-links {
     display: none; /* Li nascondiamo dalla barra principale */
+
     position: absolute;
+
     top: 100%;
+
     left: 0;
+
     width: 100%;
+
     padding: 2rem;
+
     background: rgba(0, 0, 0, 0.95);
+
     backdrop-filter: blur(10px);
+
     flex-direction: column; /* Li mettiamo uno sotto l'altro */
+
     gap: 1.5rem;
+
     border-radius: 0 0 20px 20px;
+
     text-align: center;
   }
 
   /* 4. Quando il menu viene aperto (tramite click) */
+
   .nav-links.active {
     display: flex;
   }
 
   /* 5. Mostra il contenitore nel menù a tendina */
+
   .menu-btn-mobile {
     display: flex !important;
+
     justify-content: center;
+
     width: 100%;
+
     margin-top: 2rem;
+
     visibility: visible !important;
+
     opacity: 1 !important;
   }
 
   /* FIX PER SAFARI iPHONE */
+
   .menu-btn-mobile .visit-btn {
     display: inline-block !important;
+
     -webkit-appearance: none !important;
+
     appearance: none !important; /* Versione standard */
+
     margin: 0 auto;
   }
 }
 
 /* =========================================
-   3. SEZIONE ABOUT
-   ========================================= */
+
+3. SEZIONE ABOUT
+
+========================================= */
+
 .about {
   display: flex;
+
   align-items: center;
+
   justify-content: center;
 }
+
 .about .about-container {
   display: flex;
+
   align-items: center;
+
   justify-content: center;
+
   gap: 10rem;
+
   width: 100%;
+
   max-width: 1200px;
+
   margin: 0 auto;
 }
+
 /* La foto tonda */
+
 .about img {
   /* Assicurati che sia l'immagine corretta */
+
   width: 30vw; /* Dimensione su desktop */
+
   max-width: 400px;
+
   border-radius: 50%;
+
   object-fit: cover;
 }
 
 /* Il contenitore di TUTTO il testo (Nome, Professione, Bottoni, Social) */
+
 .info-box {
   display: flex;
+
   flex-direction: column;
+
   align-items: center; /* Centra internamente il testo e i bottoni */
+
   text-align: center; /* Centra le scritte */
+
   gap: 1.5rem;
 }
+
 .info-box h3 {
   font-size: 1.8rem;
+
   font-weight: 500;
+
   opacity: 0.8;
 }
+
 .info-box h1 {
   font-size: 4rem;
+
   font-weight: 600;
 }
+
 .info-box span {
   background: linear-gradient(to right, rgb(255, 0, 255), rgb(0, 157, 255));
+
   background-clip: text;
+
   color: transparent;
+
   font-size: 2rem;
 }
 
 .btn-group {
   display: flex;
+
   gap: 1rem;
 }
 
 .socials {
   display: flex;
+
   gap: 2rem;
 }
+
 .socials i {
   font-size: 2.5rem;
+
   cursor: pointer;
+
   transition: 0.2s ease-in-out;
 }
+
 .socials i:hover {
   transform: scale(1.1);
 }
 
 /* =========================================
-   2. FIX HERO PER MOBILE (Sotto i 768px)
-   ========================================= */
+
+2. FIX HERO PER MOBILE (Sotto i 768px)
+
+========================================= */
 
 @media (max-width: 768px) {
   /* 1. Forza il contenitore a diventare una COLONNA */
+
   .about .about-container {
     /* Usa lo stesso nome del Desktop */
+
     flex-direction: column !important; /* Mette la foto sopra e il testo sotto */
+
     gap: 3rem !important; /* Riduce lo spazio tra foto e testo */
+
     text-align: center;
+
     width: 100%;
+
     align-items: center; /* Centra sia la foto che il testo nella colonna */
   }
 
   /* 2. Sistema la Foto sopra */
+
   .about img {
     width: 60vw !important; /* Ingrandisce la foto su telefono */
+
     max-width: 250px;
+
     height: auto;
+
     margin: 0 auto; /* Centra la foto */
+
     border-radius: 50%;
   }
 
   /* 3. Sistema il testo sotto */
+
   .info-box {
     align-items: center !important; /* Centra i bottoni e i social */
+
     text-align: center !important; /* Centra le scritte */
+
     gap: 1.2rem;
+
     width: 100%;
   }
 
   /* Riduciamo un po' i font grandi per iPhone */
+
   .info-box h1 {
     font-size: 2.5rem !important; /* Rimpicciolisce "Your Name" */
   }
+
   .info-box h3 {
     font-size: 1.3rem !important; /* Rimpicciolisce "Hi, I'm" */
   }
 }
+
 /* =========================================
-   4. SEZIONE EXPERIENCE - Versione Pulita
-   ========================================= */
+
+4. SEZIONE EXPERIENCE - Versione Pulita
+
+========================================= */
 
 /* Centratura universale del titolo Experience */
+
 .experience-info {
   width: 100%; /* Occupa tutta la larghezza */
+
   display: flex; /* Usiamo flex per gestire meglio l'allineamento */
+
   flex-direction: column;
+
   align-items: center; /* Centra il contenuto orizzontalmente */
+
   text-align: center; /* Centra il testo all'interno */
+
   margin-bottom: 3rem;
 }
 
 .grid {
   display: grid;
+
   /* Auto-layout: si mette in colonna da solo sotto i 300px circa */
+
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
   gap: 2rem;
+
   width: 100%;
+
   max-width: 1100px;
+
   margin: 0 auto;
 }
 
 .grid-card {
   border: 2px solid black;
+
   border-radius: 3rem;
+
   padding: 3rem;
+
   display: flex;
+
   flex-direction: column;
+
   align-items: flex-start; /* Allinea icone e titoli a sinistra */
+
   text-align: left; /* Allinea il testo a sinistra */
+
   cursor: pointer;
+
   transition: 0.2s ease-in-out;
 }
 
 /* FORZA il testo dentro le card (descrizioni) a stare a sinistra */
+
 .grid-card p,
 .grid-card div {
   text-align: left;
+
   width: 100%;
 }
 
 .grid-card:hover {
   transform: scale(1.02);
+
   background-color: black;
+
   color: white;
 }
 
 .grid-card i {
   font-size: 1.5rem;
+
   margin-bottom: 1rem;
 }
 
 .grid-card span {
   font-size: 1.5rem;
+
   font-weight: 500;
+
   background: linear-gradient(to right, #009dff, #ff00ff);
+
   background-clip: text;
+
   color: transparent;
 }
 
 /* --- FIX PER MOBILE (Sotto i 768px) --- */
+
 @media (max-width: 768px) {
   /* AGGIUNGI QUESTO: Blocca lo scorrimento laterale su tutto il sito */
+
   html,
   body {
     overflow-x: hidden;
+
     width: 100%;
+
     position: relative;
   }
 
   .experience-info {
     text-align: center;
+
     width: 100%; /* Assicura che il contenitore occupi tutto lo spazio per centrare */
+
     display: block; /* O flex con align-items: center */
+
     margin: 0 auto;
   }
+
   /* AGGIUNGI QUESTO: Assicurati che il titolo H2 non sia troppo grande */
+
   .experience-info h2,
   .title {
     font-size: 2rem;
+
     text-align: center;
+
     width: 100%;
   }
 
   .grid {
     grid-template-columns: 1fr;
+
     width: 90%;
+
     margin: 0 auto;
+
     /* AGGIUNGI QUESTO: evita che la griglia crei spazio extra */
+
     box-sizing: border-box;
   }
 
   .grid-card {
     padding: 2rem;
+
     align-items: flex-start !important;
+
     text-align: left !important;
+
     max-width: 100%; /* AGGIUNGI QUESTO: evita che la card esca dai bordi */
+
     box-sizing: border-box;
   }
 
   /* Questo risolve il problema del tuo screenshot su iPhone */
+
   .grid-card p,
   .grid-card span,
   .grid-card div {
     text-align: left !important;
   }
 }
+
 /* =========================================
-   5. SEZIONE PROJECTS
-   ========================================= */
+
+5. SEZIONE PROJECTS
+
+========================================= */
+
 .projects-grid {
   display: grid;
+
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
   gap: 2rem;
 }
+
 .projects-card {
   padding: 3rem 2rem;
+
   display: flex;
+
   flex-direction: column;
+
   align-items: center;
+
   justify-content: center;
+
   text-align: center;
+
   gap: 1.5rem;
+
   border: 2px solid black;
+
   border-radius: 3rem;
+
   cursor: pointer;
+
   transition: 0.3s ease-in-out;
 }
+
 .projects-card:hover {
   background-color: black;
+
   color: white;
+
   transform: scale(-10px) scale(1.02);
 }
+
 .projects-card img {
   width: 20vw;
+
   border-radius: 1rem;
 }
+
 .projects-card:hover .btn {
   border: 2px solid white;
+
   color: white;
 }
+
 .projects-card .btn:hover {
   border: 2px solid white;
+
   background-color: white;
+
   color: black;
 }
+
 .projects-card h3 {
   font-size: 2rem;
+
   font-weight: 500;
 }
 
 /* =========================================
-   6. SEZIONE CONTATTI
-   ========================================= */
+
+6. SEZIONE CONTATTI
+
+========================================= */
+
 .contact {
   display: flex;
+
   flex-direction: column;
+
   align-items: center;
+
   justify-content: center;
+
   padding: 8rem 12%;
 }
 
 .contact-form {
   width: 100%;
+
   max-width: 1000px;
+
   margin: 0 auto;
 }
 
 .contact-container {
   display: grid;
+
   grid-template-columns: 1fr 1fr;
+
   gap: 2rem;
+
   margin-bottom: 2rem;
 }
 
 .contact-inputs {
   display: flex;
+
   flex-direction: column;
+
   gap: 1.5rem;
 }
 
 .contact-inputs input,
 .contact-message textarea {
   width: 100%;
+
   padding: 1.2rem;
+
   background: transparent;
+
   border: 2px solid black;
+
   border-radius: 1rem;
+
   font-family: "Poppins", sans-serif;
+
   font-size: 1rem;
+
   color: black;
+
   outline: none;
+
   transition: 0.3s ease;
 }
 
 .contact-message {
   display: flex;
 }
+
 .contact-message textarea {
   height: 100%;
+
   min-height: 250px;
+
   resize: none;
 }
 
 .contact-inputs input:focus,
 .contact-message textarea:focus {
   border-color: #009dff;
+
   box-shadow: 0 0 8px rgba(0, 157, 255, 0.2);
 }
 
 .contact-btn-group {
   display: flex;
+
   justify-content: center;
+
   width: 100%;
+
   margin-top: 1rem;
 }
 
 .contact-btn-group .btn {
   background-color: transparent;
+
   color: black;
+
   border: 2px solid black;
+
   padding: 1rem 3rem;
+
   font-size: 1.1rem;
+
   font-weight: 600;
+
   border-radius: 3rem;
+
   cursor: pointer;
+
   transition: 0.3s ease-in-out;
 }
 
 .contact-btn-group .btn:hover {
   background-color: black !important;
+
   color: white !important;
+
   transform: scale(1.05);
 }
 
 /* Altri Input (Es. Newsletter) */
+
 .input-box {
   display: flex;
+
   flex-direction: column;
+
   align-items: center;
+
   justify-content: center;
+
   text-align: center;
+
   gap: 2rem;
+
   margin-top: 5rem;
 }
+
 .input-box input {
   position: relative;
+
   border-radius: 3rem;
+
   border: 2px solid black;
+
   padding: 1rem 2rem; /* molto più piccolo per adattarsi a schermi piccoli */
+
   font-size: 1rem;
+
   width: 100%;
+
   max-width: 100%;
+
   box-sizing: border-box;
 }
+
 .input-box input::placeholder {
   font-size: 1.2rem;
 }
+
 .input {
   position: relative;
 }
+
+/* --- FINE SEZIONE INPUT --- */
+
 .input i {
   position: absolute;
+
   font-size: 4rem;
+
   top: 50%;
+
   left: 10px;
+
   transform: translate(50%, -50%);
 }
 
+.input i {
+  position: absolute;
+
+  font-size: 4rem;
+
+  top: 50%;
+
+  left: 10px;
+
+  transform: translate(50%, -50%);
+}
+
+/* Questa chiude un eventuale errore precedente */
+
 /* =========================================
-   7. FOOTER - Versione Elastica
-   ========================================= */
+
+7. FOOTER DEFINITIVO
+
+========================================= */
+
 footer {
-  /* Rimosso bottom:0 e left:0 che possono dare problemi di posizionamento */
   width: 100%;
-  min-height: 10rem; /* Altezza MINIMA, ma può crescere se serve */
-  padding: 2rem 1rem; /* Spazio interno per non far toccare i bordi */
+
+  padding: 3rem 5%;
+
   display: flex;
+
   flex-direction: column;
+
   gap: 1.5rem;
+
   align-items: center;
+
   justify-content: center;
-  box-sizing: border-box;
 }
 
 footer ul {
   display: flex;
+
+  flex-direction: row;
+
   align-items: center;
+
   justify-content: center;
-  gap: 2rem; /* Ridotto leggermente per schermi piccoli */
-  flex-wrap: wrap; /* Fondamentale: permette ai link di andare a capo su mobile */
+
+  gap: 2rem;
 }
 
 footer ul li a {
   color: black;
-  font-weight: 600;
-  transition: 0.3s;
-}
 
-footer ul li a:hover {
-  color: #009dff;
+  font-weight: 600;
+
+  font-size: 1.1rem;
 }
 
 .copyright {
   font-weight: 300;
-  margin-top: 1rem; /* Ridotto per bilanciare il padding */
+
   text-align: center;
+
+  font-size: 0.9rem;
+
+  margin-top: 1rem;
 }
 
-/* FIX SPECIFICO PER MOBILE */
-@media (max-width: 600px) {
+/* =========================================
+
+8. MEDIA QUERIES FINALI
+
+========================================= */
+
+@media (max-width: 768px) {
   footer ul {
-    gap: 1rem; /* Link più vicini su telefoni mini */
-    flex-direction: column; /* Opzionale: mette i link uno sotto l'altro */
+    gap: 1rem;
+  }
+
+  footer ul li a {
+    font-size: 0.9rem;
   }
 }
 
 /* =========================================
-   8. MEDIA QUERIES (RESPONSIVE)
-   ========================================= */
+
+8. MEDIA QUERIES (RESPONSIVE)
+
+========================================= */
 
 /* --- TABLET GRANDI E LAPTOP PICCOLI (1280px) --- */
+
 @media (max-width: 1280px) {
   header {
     padding: 1rem 2rem;
+
     gap: 2rem;
   }
+
   .about .about-container {
     gap: 3rem;
   }
+
   .experience-info {
     flex-direction: column;
   }
+
   .input-box input {
     padding: 2rem 5rem;
+
     font-size: 2.5rem;
   }
+
   .input-box input::placeholder {
     font-size: 2.5rem;
   }
+
   .input-box i {
     font-size: 2.5rem;
   }
 }
 
 /* =========================================
-   8. MEDIA QUERIES (RESPONSIVE) - VERSION FIX
-   ========================================= */
+
+8. MEDIA QUERIES (RESPONSIVE) - VERSION FIX
+
+========================================= */
 
 @media (max-width: 768px) {
   /* BLOCCO TOTALE SCIVOLAMENTO SAFARI */
+
   html,
   body {
     overflow-x: hidden;
+
     width: 100%;
+
     position: relative;
   }
 
@@ -739,37 +1125,52 @@ footer ul li a:hover {
   }
 
   /* TITOLO EXPERIENCE CENTRATO */
+
   .experience-info {
     text-align: center;
+
     align-items: center;
+
     width: 100%;
+
     margin-bottom: 2rem;
   }
 
   .section-title {
     font-size: 2.5rem; /* Ridotto: 4rem era troppo grande per iPhone */
+
     width: 100%;
+
     text-align: center;
   }
 
   /* GRID DELLE CARD */
+
   .grid {
     grid-template-columns: 1fr;
+
     width: 100%;
+
     gap: 1.5rem;
   }
 
   .grid-card {
     padding: 2rem;
+
     align-items: flex-start !important;
+
     text-align: left !important;
+
     width: 100%;
   }
 
   /* FIX INPUT CHE SBALLANO IL SITO */
+
   .input-box input {
     padding: 1rem 1.5rem !important;
+
     font-size: 1.2rem !important;
+
     width: 100% !important;
   }
 
@@ -778,9 +1179,12 @@ footer ul li a:hover {
   }
 
   /* HEADER MOBILE */
+
   header {
     width: 92% !important;
+
     padding: 0.8rem 1.2rem;
+
     gap: 0.5rem;
   }
 
@@ -790,6 +1194,7 @@ footer ul li a:hover {
 }
 
 /* SMARTPHONE MOLTO PICCOLI */
+
 @media (max-width: 480px) {
   .section-title {
     font-size: 2rem;
@@ -801,13 +1206,17 @@ footer ul li a:hover {
 }
 
 /* --- ANIMAZIONI --- */
+
 @keyframes fadeInDropDown {
   from {
     opacity: 0;
+
     transform: translateY(-10px);
   }
+
   to {
     opacity: 1;
+
     transform: translateY(0);
   }
 }
