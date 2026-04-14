@@ -86,8 +86,8 @@ header {
   width: 95%;
   max-width: 1100px;
   padding: 0.5rem 1.5rem;
-  background-color: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(8px);
+  background-color: rgba(0, 0, 0, 0.9) !important; /* Nero più profondo */
+  backdrop-filter: blur(10px);
   border-radius: 3rem;
   color: white;
   flex-wrap: nowrap;
@@ -605,34 +605,47 @@ footer ul li a {
     display: block !important; /* Mostra le 3 lineette */
   }
 
-  /* --- MENU A TENDINA CENTRATO --- */
+  /* --- MENU A TENDINA COMPATTO ED ELEGANTE --- */
   .nav-links {
     display: none;
-    position: fixed; /* Resta fisso rispetto allo schermo */
-    top: 5.5rem; /* Distanza dall'alto */
-    left: 50%; /* Sposta al centro */
-    transform: translateX(-50%); /* Centratura matematica perfetta */
-    width: 90%; /* Non tocca i bordi */
-    max-width: 400px; /* Larghezza massima per non sballare su tablet */
-    padding: 2rem;
-    background: rgba(0, 0, 0, 0.95);
+    position: fixed !important;
+    top: 5rem; /* Più vicino all'header */
+    left: 50% !important; /* Lo riportiamo al centro matematico */
+    transform: translateX(-50%) !important;
+    width: 85% !important; /* Un po' più stretto lateralmente */
+    max-width: 320px; /* Larghezza contenuta anche su laptop */
+
+    /* --- RIDUZIONE SPAZI --- */
+    padding: 1.5rem; /* Meno spazio vuoto intorno ai link */
+    gap: 1rem; /* Link molto più vicini tra loro */
+
+    background: rgba(0, 0, 0, 0.9) !important;
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
     flex-direction: column;
-    gap: 1.5rem;
-    border-radius: 2rem; /* Bolla arrotondata */
+    border-radius: 2rem;
     text-align: center;
-    z-index: 1001;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .nav-links.active {
     display: flex !important;
   }
 
+  /* Forza la centratura dei link */
   .nav-links li {
     width: 100%;
-    display: flex;
-    justify-content: center;
+    margin: 0;
+    padding: 0.2rem 0; /* Riduce l'altezza di ogni riga */
+  }
+  .nav-links li a {
+    font-size: 1.1rem !important; /* Testo più leggibile */
+    font-weight: 400;
+    letter-spacing: 1px; /* Lettere leggermente più distanziate */
+    color: white;
   }
 
   /* --- Bottone dentro il menu --- */
@@ -640,7 +653,7 @@ footer ul li a {
     display: flex !important;
     justify-content: center;
     width: 100%;
-    margin-top: 1rem;
+    margin-top: 0.5rem; /* Più spazio tra l'ultimo link e il bottone */
   }
 
   /* --- Sezione Experience --- */
