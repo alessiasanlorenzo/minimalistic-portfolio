@@ -60,19 +60,22 @@ header {
   transform: translateX(-50%);
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-wrap: nowrap !important; /* <-- IL SALVAVITA: vieta rigorosamente di andare a capo */
-  white-space: nowrap; /* <-- AIUTA IL TESTO A NON ROMPERSI */
+  justify-content: space-between; /* Distribuisce logo e bottone ai lati */
+
+  /* FIX PER IL RIMPICCIOLIMENTO */
+  width: 95%; /* Si adatta sempre alla larghezza dello schermo */
+  max-width: 1100px; /* Impedisce che diventi troppo largo su monitor grandi */
+  min-width: auto; /* RIMOSSO 800px: ora può rimpicciolirsi liberamente */
+
+  padding: 0.5rem 1.5rem;
   background-color: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(8px);
   color: white;
-  padding: 0.5rem 1.5rem;
   border-radius: 3rem;
   z-index: 1000;
-  width: auto;
-  max-width: 1200px;
-  min-width: 800px;
-  gap: 4rem;
+
+  flex-wrap: nowrap !important; /* Impedisce il salto riga su Chrome/Safari Mac */
+  white-space: nowrap;
 }
 
 .logo {
@@ -88,8 +91,9 @@ header {
 
 .nav-links {
   display: flex;
-  gap: 1.5rem; /* Abbassato da 2rem per dare più spazio orizzontale */
-  flex-shrink: 0; /* Impedisce alla lista di schiacciarsi e fare danni */
+  gap: 1.5rem; /* Spazio tra About, Experience, etc. */
+  margin: 0 1rem; /* Margine di sicurezza ai lati dei link */
+  flex-shrink: 1; /* Permette ai link di avvicinarsi se lo schermo stringe */
 }
 li a {
   position: relative;
@@ -179,25 +183,51 @@ li a:hover::before {
 /* --- 2. REGOLE MOBILE & TABLET --- */
 /* Aumentiamo la soglia a 1400px: il menù scatta PRIMA che la barra si sballi! */
 @media (max-width: 1400px) {
-  /* Fa sparire il bottone della barra PC */
+  /* 1. Nascondiamo il bottone della barra PC */
   .header-btn-pc {
     display: none !important;
   }
 
-  /* Mostra il contenitore nel menù a tendina */
+  /* 2. Mostriamo l'icona del menu (le 3 lineette) */
+  #menu-icon {
+    display: block !important;
+  }
+
+  /* 3. TRASFORMAZIONE MENU: Nascondiamo i link orizzontali */
+  .nav-links {
+    display: none; /* Li nascondiamo dalla barra principale */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    flex-direction: column; /* Li mettiamo uno sotto l'altro */
+    gap: 1.5rem;
+    border-radius: 0 0 20px 20px;
+    text-align: center;
+  }
+
+  /* 4. Quando il menu viene aperto (tramite click) */
+  .nav-links.active {
+    display: flex;
+  }
+
+  /* 5. Mostra il contenitore nel menù a tendina */
   .menu-btn-mobile {
     display: flex !important;
     justify-content: center;
     width: 100%;
     margin-top: 2rem;
-    visibility: visible !important; /* Aiuta iOS a capire che DEVE farsi vedere */
+    visibility: visible !important;
     opacity: 1 !important;
   }
 
-  /* FIX PER SAFARI iPHONE: Rimuove il blocco di default della Apple */
+  /* FIX PER SAFARI iPHONE */
   .menu-btn-mobile .visit-btn {
     display: inline-block !important;
-    -webkit-appearance: none !important; /* IL TRUCCO PER iOS */
+    -webkit-appearance: none !important;
     margin: 0 auto;
   }
 }
