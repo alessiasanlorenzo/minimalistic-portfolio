@@ -152,21 +152,27 @@ li a:hover::before {
   display: none;
 }
 /* =========================================
-   FIX DEFINITIVO BOTTONI (PC vs MOBILE)
+   FIX DEFINITIVO BOTTONI (PC vs MOBILE & SAFARI)
    ========================================= */
+
+/* --- FIX HEADER SBALLATO SU CHROME PC --- */
+.header {
+  flex-wrap: nowrap !important; /* Vieta rigorosamente al bottone di cadere giù! */
+  white-space: nowrap; /* Mantiene tutti i testi su una singola riga */
+}
 
 /* --- 1. REGOLE PER IL PC (Schermo grande) --- */
 .menu-btn-mobile {
-  display: none !important; /* Nasconde il bottone del menù */
+  display: none !important;
 }
 
 .header-btn-pc {
-  display: inline-flex !important; /* inline-flex mantiene perfetto l'allineamento orizzontale */
+  display: inline-flex !important;
 }
 
-/* --- 2. REGOLE PER IL MOBILE (Sotto i 1280px) --- */
+/* --- 2. REGOLE PER IL MOBILE & SAFARI (Sotto i 1280px) --- */
 @media (max-width: 1280px) {
-  /* Fa sparire COMPLETAMENTE il bottone sulla barra del PC */
+  /* Nasconde il bottone del PC */
   .header-btn-pc {
     display: none !important;
     width: 0 !important;
@@ -174,18 +180,18 @@ li a:hover::before {
     margin: 0 !important;
   }
 
-  /* Fa apparire il contenitore del bottone nel menù a tendina */
+  /* FIX SAFARI: Mostra il contenitore nel menù a tendina */
   .menu-btn-mobile {
-    display: flex !important;
-    justify-content: center;
-    align-items: center;
+    display: block !important; /* Safari preferisce 'block' per i tag <li> */
+    text-align: center;
     width: 100%;
     margin-top: 2rem;
   }
 
-  /* Forza il bottone stesso a rendersi visibile nel menù */
+  /* FIX SAFARI: Forza il bottone a farsi vedere */
   .menu-btn-mobile .visit-btn {
-    display: flex !important;
+    display: inline-block !important;
+    margin: 0 auto; /* Questo serve a centrare il bottone */
   }
 }
 
