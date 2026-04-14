@@ -121,7 +121,32 @@ li a:hover::before {
   background: linear-gradient(to right, rgb(255, 0, 255), rgb(0, 157, 255));
   transform: scale(1.03);
 }
+/* Stile forzato per il bottone GitHub dentro il menù a tendina */
+.nav-links li .visit-btn {
+  background: linear-gradient(
+    to right,
+    rgb(0, 157, 255),
+    rgb(255, 0, 255)
+  ) !important;
+  color: white !important;
+  border: none !important;
+  padding: 0.8rem 1.5rem !important;
+  border-radius: 3rem !important;
+  font-weight: 500 !important;
+  font-size: 1rem !important;
+  cursor: pointer;
+  font-family: inherit;
+}
 
+.nav-links li .visit-btn:hover {
+  background: linear-gradient(
+    to right,
+    rgb(255, 0, 255),
+    rgb(0, 157, 255)
+  ) !important;
+  transform: scale(1.03) !important;
+  transition: 0.3s ease-in-out;
+}
 #menu-icon {
   font-size: 2rem;
   display: none;
