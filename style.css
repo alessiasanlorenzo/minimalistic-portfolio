@@ -152,31 +152,40 @@ li a:hover::before {
   display: none;
 }
 /* =========================================
-   GESTIONE BOTTONI GITHUB (PC vs MOBILE)
+   FIX DEFINITIVO BOTTONI (PC vs MOBILE)
    ========================================= */
 
-/* 1. SU PC: Nascondiamo il bottone del menù a tendina */
+/* --- 1. REGOLE PER IL PC (Schermo grande) --- */
 .menu-btn-mobile {
-  display: none !important;
+  display: none !important; /* Nasconde il bottone del menù */
 }
 
-/* 2. SU PC: Mostriamo il bottone in alto in modo "inline" per non sballare l'header */
 .header-btn-pc {
-  display: inline-block !important;
+  display: inline-flex !important; /* inline-flex mantiene perfetto l'allineamento orizzontale */
 }
 
-/* 3. SU MOBILE E TABLET (Quando lo schermo rimpicciolisce) */
+/* --- 2. REGOLE PER IL MOBILE (Sotto i 1280px) --- */
 @media (max-width: 1280px) {
-  /* Nascondi il bottone sulla barra del PC */
+  /* Fa sparire COMPLETAMENTE il bottone sulla barra del PC */
   .header-btn-pc {
     display: none !important;
+    width: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
   }
 
-  /* Mostra il bottone dentro al menù a tendina */
+  /* Fa apparire il contenitore del bottone nel menù a tendina */
   .menu-btn-mobile {
-    display: block !important;
-    text-align: center; /* Centra il bottone nel menù */
-    margin-top: 1.5rem; /* Spazio extra dal link "Contact" */
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 2rem;
+  }
+
+  /* Forza il bottone stesso a rendersi visibile nel menù */
+  .menu-btn-mobile .visit-btn {
+    display: flex !important;
   }
 }
 
