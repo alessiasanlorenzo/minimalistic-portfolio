@@ -649,6 +649,14 @@ footer ul li a {
 
 /* Mobile (768px) */
 @media (max-width: 768px) {
+  /* FORZA LA SCOMPARSA DI TUTTI I NAV TRANNE LA PILLOLA */
+  header nav:not(.nav-links),
+  header ul:not(.nav-links),
+  header .nav-links-container,
+  .header-btn-pc {
+    display: none !important;
+  }
+
   html,
   body {
     scroll-padding-top: 100px;
@@ -669,13 +677,25 @@ footer ul li a {
 
   /* Header mobile */
   header {
-    width: 92%;
-    padding: 0.8rem 1.2rem;
     display: flex !important;
-    justify-content: space-between !important; /* Logo a sinistra, Icona a destra */
+    justify-content: space-between !important;
     align-items: center !important;
+    width: 100% !important;
+    padding: 0.8rem 1.2rem !important;
+    box-sizing: border-box !important;
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    background: #000; /* Assicurati che sia nero */
+    z-index: 10000;
   }
-
+  /* Nasconde i link che non devono stare sulla barra nera */
+  header nav:not(.nav-links),
+  header .nav-links-container,
+  .nav-menu-desktop,
+  .header-btn-pc {
+    display: none !important;
+  }
   /* Nascondiamo i link desktop e i bottoni extra sulla barra */
   header .nav-links-container,
   .nav-menu-desktop,
