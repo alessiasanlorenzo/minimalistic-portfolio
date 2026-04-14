@@ -181,8 +181,30 @@ li a:hover::before {
 }
 
 /* --- 2. REGOLE MOBILE & TABLET --- */
+
+/* --- STEP INTERMEDIO: Spremiamo l'header al massimo --- */
+@media (max-width: 1150px) {
+  header {
+    gap: 0.5rem; /* Spazio ridotto all'osso tra le tre sezioni */
+    width: 98%; /* Sfrutta tutto lo schermo disponibile */
+    padding: 0.4rem 1rem;
+  }
+
+  .nav-links {
+    gap: 0.8rem; /* Avvicina tantissimo i link tra loro */
+  }
+
+  .nav-links a {
+    font-size: 0.9rem; /* Rimpicciolisce un po' il testo dei link */
+  }
+
+  .header-btn-pc {
+    padding: 0.4rem 1rem; /* Rimpicciolisce il bottone */
+    font-size: 0.9rem;
+  }
+}
 /* Aumentiamo la soglia a 1400px: il menù scatta PRIMA che la barra si sballi! */
-@media (max-width: 1050px) {
+@media (max-width: 750px) {
   /* 1. Nascondiamo il bottone della barra PC */
   .header-btn-pc {
     display: none !important;
