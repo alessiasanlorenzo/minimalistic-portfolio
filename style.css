@@ -155,29 +155,28 @@ li a:hover::before {
    GESTIONE BOTTONI GITHUB (PC vs MOBILE)
    ========================================= */
 
-/* Su PC (schermo intero): Nascondiamo il bottone che sta dentro la lista */
+/* 1. SU PC: Nascondiamo il bottone del menù a tendina */
 .menu-btn-mobile {
   display: none !important;
 }
 
-/* Su PC (schermo intero): Mostriamo il bottone sulla barra */
+/* 2. SU PC: Mostriamo il bottone in alto in modo "inline" per non sballare l'header */
 .header-btn-pc {
-  display: block !important;
+  display: inline-block !important;
 }
 
-/* Quando lo schermo si rimpicciolisce (Tablet/Mobile) facciamo lo scambio! */
+/* 3. SU MOBILE E TABLET (Quando lo schermo rimpicciolisce) */
 @media (max-width: 1280px) {
-  /* 1. Nascondiamo il bottone sulla barra */
+  /* Nascondi il bottone sulla barra del PC */
   .header-btn-pc {
     display: none !important;
   }
 
-  /* 2. Mostriamo il bottone dentro al menù a tendina */
+  /* Mostra il bottone dentro al menù a tendina */
   .menu-btn-mobile {
-    display: flex !important;
-    justify-content: center; /* Centra il bottone nel menù */
-    margin-top: 1.5rem; /* Dà un po' di respiro dal link "Contact" */
-    width: 100%; /* Assicura che prenda tutto lo spazio necessario */
+    display: block !important;
+    text-align: center; /* Centra il bottone nel menù */
+    margin-top: 1.5rem; /* Spazio extra dal link "Contact" */
   }
 }
 
