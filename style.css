@@ -551,6 +551,23 @@ footer ul li a {
     padding: 0.4rem 1rem;
     font-size: 0.9rem;
   }
+  .about .about-container {
+    flex-direction: column !important; /* Forza gli elementi uno sopra l'altro */
+    gap: 2rem !important; /* Riduce lo spazio tra foto e scritte */
+    text-align: center; /* Centra tutti i testi */
+  }
+  .about img {
+    width: 60vw !important; /* Ingrandisce la foto per riempire meglio lo schermo */
+    max-width: 300px; /* Impedisce che diventi gigantesca */
+    margin: 0 auto; /* La centra orizzontalmente */
+  }
+  .info-box {
+    align-items: center !important; /* Centra il nome e la professione */
+  }
+
+  .info-box h1 {
+    font-size: 2.5rem !important; /* Rimpicciolisce il nome per non farlo andare fuori */
+  }
 }
 
 /* Tablet piccolo e smartphone - Menu hamburger */
