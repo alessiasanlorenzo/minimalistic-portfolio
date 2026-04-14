@@ -625,17 +625,18 @@ footer ul li a {
     opacity: 0;
     visibility: hidden;
     margin: 0 !important;
+    margin-top: 5px !important;
     padding: 1.5rem 0 !important;
     list-style: none;
 
     /* 2. Posizionamento e ANIMAZIONE DI RITIRATA */
     position: fixed !important;
-    top: 5.5rem;
+    top: 7rem;
     left: 50% !important;
 
     /* Aggiungi queste righe specifiche per Safari */
     -webkit-transform: translate(-50%, -20px) !important;
-    transform: translate(-50%, -20px) !important;
+    transform: translate(-50%, -10px) !important;
 
     /* Transizione con prefisso */
     -webkit-transition:
@@ -674,7 +675,7 @@ footer ul li a {
     pointer-events: auto !important;
 
     /* Riporta in posizione con prefisso */
-    -webkit-transform: translate(-50%, 0) !important;
+    -webkit-transform: translate(-50%, -10px) !important;
     transform: translate(-50%, 0) !important;
   }
 
