@@ -620,20 +620,23 @@ footer ul li a {
 
   /* --- MENU A TENDINA COMPATTO ED ELEGANTE --- */
   .nav-links {
-    /* 1. Reset totale dei comportamenti predefiniti dei browser */
-    display: none;
+    /* 1. CAMBIATO: Niente display: none, usiamo l'invisibilità animabile */
+    display: flex; /* Deve essere flex per mostrare i link in colonna */
+    opacity: 0;
+    visibility: hidden;
     margin: 0 !important;
-    padding: 1.5rem 0 !important; /* Spazio interno sopra e sotto */
-    list-style: none; /* Toglie i pallini della lista */
+    padding: 1.5rem 0 !important;
+    list-style: none;
 
-    /* 2. Posizionamento Universale Centrato */
+    /* 2. Posizionamento e ANIMAZIONE DI RITIRATA */
     position: fixed !important;
-    top: 5.5rem; /* Distanza fissa dall'alto */
-    left: 50% !important; /* Sposta l'angolo sinistro a metà schermo */
-    transform: translateX(
-      -50%
-    ) !important; /* Lo tira indietro del 50% della sua larghezza */
-
+    top: 5.5rem;
+    left: 50% !important;
+    /* AGGIUNTO: Parte un po' più in alto e trasparente */
+    transform: translate(-50%, -20px) !important;
+    /* LA MAGIA: transizione fluida su opacità e movimento */
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none; /* Impedisce di cliccare i link quando è chiuso */
     /* 3. Larghezza Adattiva */
     width: 85% !important; /* Occupa l'85% di QUALSIASI schermo */
     max-width: 350px; /* Ma non diventa mai più largo di 350px (ottimo per tablet/mac) */
@@ -655,7 +658,15 @@ footer ul li a {
   }
 
   .nav-links.active {
-    display: flex !important;
+    /* 1. Invece di display: flex, usiamo l'opacità */
+    opacity: 1 !important;
+    visibility: visible !important;
+
+    /* 2. Lo riportiamo alla posizione centrale perfetta senza l'offset di 20px */
+    transform: translate(-50%, 0) !important;
+
+    /* 3. Permettiamo di nuovo i click sui link */
+    pointer-events: auto !important;
   }
 
   /* Forza la centratura dei link */
@@ -908,5 +919,12 @@ section:first-of-type {
 
   .timeline-item:nth-child(even) .timeline-icon {
     left: -8px;
+  }
+}
+/* --- RIDUCE LO SPAZIO DELLO SCROLL SUGLI SCHERMI PICCOLI --- */
+@media screen and (max-width: 768px) {
+  html,
+  body {
+    scroll-padding-top: 40px; /* <--- Numero più basso per il mobile */
   }
 }
