@@ -621,7 +621,7 @@ footer ul li a {
   /* --- MENU A TENDINA COMPATTO ED ELEGANTE --- */
   .nav-links {
     /* 1. CAMBIATO: Niente display: none, usiamo l'invisibilità animabile */
-    display: flex; /* Deve essere flex per mostrare i link in colonna */
+    display: flex !important; /* Deve essere flex per mostrare i link in colonna */
     opacity: 0;
     visibility: hidden;
     margin: 0 !important;
@@ -634,12 +634,18 @@ footer ul li a {
     left: 50% !important;
 
     /* Aggiungi queste righe specifiche per Safari */
-    -webkit-transform: translate(-50%, -20px);
+    -webkit-transform: translate(-50%, -20px) !important;
     transform: translate(-50%, -20px) !important;
 
     /* Transizione con prefisso */
-    -webkit-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    -webkit-transition:
+      opacity 0.4s ease,
+      -webkit-transform 0.4s ease,
+      visibility 0.4s ease;
+    transition:
+      opacity 0.4s ease,
+      transform 0.4s ease,
+      visibility 0.4s !important;
 
     pointer-events: none;
     /* 3. Larghezza Adattiva */
