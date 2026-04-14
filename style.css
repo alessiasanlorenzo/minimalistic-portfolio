@@ -151,6 +151,25 @@ li a:hover::before {
   font-size: 2rem;
   display: none;
 }
+/* --- REGOLA PER PC: Nascondi il bottone del menù a tendina --- */
+.bottone-mobile {
+  display: none;
+}
+
+/* --- REGOLA PER MOBILE: Scambia i bottoni quando lo schermo rimpicciolisce --- */
+@media (max-width: 1280px) {
+  /* Nasconde il bottone della barra in alto */
+  .bottone-pc {
+    display: none !important;
+  }
+
+  /* Mostra il bottone dentro il menù a tendina */
+  .bottone-mobile {
+    display: flex !important;
+    justify-content: center;
+    margin-top: 1.5rem; /* Dà un po' di spazio sopra il bottone */
+  }
+}
 
 /* =========================================
    3. SEZIONE ABOUT
