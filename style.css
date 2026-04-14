@@ -60,7 +60,7 @@ header {
   transform: translateX(-50%);
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: nowrap !important; /* <-- IL SALVAVITA: vieta rigorosamente di andare a capo */
   white-space: nowrap; /* <-- AIUTA IL TESTO A NON ROMPERSI */
   background-color: rgba(0, 0, 0, 0.8);
@@ -69,8 +69,10 @@ header {
   padding: 0.5rem 1.5rem;
   border-radius: 3rem;
   z-index: 1000;
-  width: 90%;
+  width: auto;
   max-width: 1200px;
+  min-width: 800px;
+  gap: 4rem;
 }
 
 .logo {
