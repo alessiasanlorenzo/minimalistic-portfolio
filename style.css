@@ -796,3 +796,110 @@ section:first-of-type {
   padding-top: 6rem !important; /* Usa un valore molto alto in rem, che si adatta meglio allo schermo */
   margin-top: 0rem !important;
 }
+
+/* --- TIMELINE EDUCATION - FIX COLLISIONE --- */
+
+.timeline-container {
+    position: relative;
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 20px 0;
+}
+
+/* La linea verticale - la spostiamo a sinistra per default */
+.timeline-container::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background-color: #ddd;
+    top: 0;
+    bottom: 0;
+    left: 20px; /* Linea a sinistra */
+    margin-left: 0;
+}
+
+/* Elemento singolo: ora tutti partono da sinistra */
+.timeline-item {
+    padding: 20px 0 20px 50px; /* Spazio per la linea a sinistra */
+    position: relative;
+    width: 100% !important;   /* Occupa tutta la larghezza */
+    left: 0 !important;
+    display: flex;
+    flex-direction: column;    /* Data sopra il testo */
+    align-items: flex-start !important;
+    text-align: left !important;
+}
+
+/* Cerchietto blu: bloccato sulla linea a sinistra */
+.timeline-icon {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background-color: #000;
+    border: 3px solid #007bff;
+    border-radius: 50%;
+    left: 13px; /* Centrato sulla linea a 20px */
+    top: 25px;
+    z-index: 2;
+}
+
+/* Testi: ora tutti neri e ben allineati */
+.timeline-date {
+    margin-bottom: 5px;
+}
+
+.timeline-date h3 {
+    color: #000 !important;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.timeline-date p {
+    color: #666 !important;
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+.timeline-content h3 {
+    color: #000 !important;
+    font-size: 1.2rem;
+    margin: 5px 0;
+}
+
+.timeline-content p {
+    color: #444 !important;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* --- SE VUOI CHE SU MONITOR GRANDI TORNI A DUE COLONNE --- */
+@media screen and (min-width: 992px) {
+    .timeline-container::after {
+        left: 50%; /* Linea al centro */
+    }
+
+    .timeline-item {
+        width: 50% !important;
+        padding: 20px 40px;
+    }
+
+    .timeline-item:nth-child(odd) {
+        left: 0 !important;
+        text-align: right !important;
+        align-items: flex-end !important;
+        padding-right: 45px;
+    }
+
+    .timeline-item:nth-child(even) {
+        left: 50% !important;
+        text-align: left !important;
+        align-items: flex-start !important;
+        padding-left: 45px;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-icon {
+        right: -8px;
+        left: auto;
+    }
+
+    .timeline-item:nth-child
