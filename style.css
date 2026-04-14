@@ -607,28 +607,38 @@ footer ul li a {
 
   /* --- MENU A TENDINA COMPATTO ED ELEGANTE --- */
   .nav-links {
+    /* 1. Reset totale dei comportamenti predefiniti dei browser */
     display: none;
+    margin: 0 !important;
+    padding: 1.5rem 0 !important; /* Spazio interno sopra e sotto */
+    list-style: none; /* Toglie i pallini della lista */
+
+    /* 2. Posizionamento Universale Centrato */
     position: fixed !important;
-    top: 5rem; /* Più vicino all'header */
-    left: 50% !important; /* Lo riportiamo al centro matematico */
-    transform: translateX(-50%) !important;
-    width: 85% !important; /* Un po' più stretto lateralmente */
-    max-width: 320px; /* Larghezza contenuta anche su laptop */
+    top: 5.5rem; /* Distanza fissa dall'alto */
+    left: 50% !important; /* Sposta l'angolo sinistro a metà schermo */
+    transform: translateX(
+      -50%
+    ) !important; /* Lo tira indietro del 50% della sua larghezza */
 
-    /* --- RIDUZIONE SPAZI --- */
-    padding: 1.5rem; /* Meno spazio vuoto intorno ai link */
-    gap: 1rem; /* Link molto più vicini tra loro */
+    /* 3. Larghezza Adattiva */
+    width: 85% !important; /* Occupa l'85% di QUALSIASI schermo */
+    max-width: 350px; /* Ma non diventa mai più largo di 350px (ottimo per tablet/mac) */
 
+    /* 4. Stile Visivo */
     background: rgba(0, 0, 0, 0.9) !important;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-
-    flex-direction: column;
     border-radius: 2rem;
-    text-align: center;
-    z-index: 9999;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
     border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+
+    /* 5. Allineamento Contenuti */
+    flex-direction: column;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 1.2rem;
+    z-index: 9999;
   }
 
   .nav-links.active {
@@ -636,10 +646,13 @@ footer ul li a {
   }
 
   /* Forza la centratura dei link */
+  /* Forza la centratura di ogni riga su ogni dispositivo */
   .nav-links li {
-    width: 100%;
-    margin: 0;
-    padding: 0.2rem 0; /* Riduce l'altezza di ogni riga */
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
   .nav-links li a {
     font-size: 1.1rem !important; /* Testo più leggibile */
