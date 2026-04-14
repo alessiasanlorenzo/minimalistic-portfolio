@@ -1,3 +1,16 @@
+/* --- RESET E BLOCCO DELLO SCROLL ORIZZONTALE --- */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden; /* Taglia fuori tutto ciò che esce dai bordi laterali */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: inherit;
+}
 /* =========================================
    1. REGOLE GENERALI & UTILITIES
    ========================================= */
