@@ -20,7 +20,9 @@ body {
   overflow-x: hidden;
   position: relative;
 }
-
+#About {
+  padding-top: 8rem !important; /* Spinge giù il contenuto per non farlo finire sotto l'header */
+}
 /* Scrollbar personalizzata */
 ::-webkit-scrollbar {
   width: 20px;
@@ -38,9 +40,9 @@ body {
    2. LAYOUT BASE
    ========================================= */
 section {
-  min-height: 100vh;
+  min-height: auto;
   width: 100%;
-  padding: 5rem 5%;
+  padding: 3rem 5%;
   position: relative;
   overflow: hidden;
   box-sizing: border-box;
@@ -77,7 +79,7 @@ section {
    ========================================= */
 header {
   position: fixed;
-  top: 1rem;
+  top: 0;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -92,7 +94,8 @@ header {
   color: white;
   flex-wrap: nowrap;
   white-space: nowrap;
-  z-index: 1000;
+  z-index: 1000 !important;
+  width: 100%;
 }
 
 .logo {
@@ -187,8 +190,14 @@ header {
 }
 
 .about img {
-  width: 30vw;
+  display: block;
+  margin: 0 auto;
+  max-width: 300px; /* Regola la grandezza a tuo piacimento */
+  height: auto;
   border-radius: 50%;
+  object-fit: cover;
+  position: relative;
+  z-index: 10;
 }
 
 .info-box {
@@ -781,4 +790,9 @@ footer ul li a {
     opacity: 1;
     transform: translateY(0);
   }
+}
+/* --- SPAZIO GARANTITO PER L'HEADER NELLA PRIMA SEZIONE --- */
+section:first-of-type {
+  padding-top: 6rem !important; /* Usa un valore molto alto in rem, che si adatta meglio allo schermo */
+  margin-top: 0rem !important;
 }
