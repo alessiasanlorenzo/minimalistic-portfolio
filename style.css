@@ -279,18 +279,25 @@ li a:hover::before {
   align-items: center;
   justify-content: center;
   gap: 10rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
+/* La foto tonda */
 .about img {
-  width: 30vw;
+  /* Assicurati che sia l'immagine corretta */
+  width: 30vw; /* Dimensione su desktop */
+  max-width: 400px;
   border-radius: 50%;
+  object-fit: cover;
 }
 
+/* Il contenitore di TUTTO il testo (Nome, Professione, Bottoni, Social) */
 .info-box {
   display: flex;
   flex-direction: column;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
+  align-items: center; /* Centra internamente il testo e i bottoni */
+  text-align: center; /* Centra le scritte */
   gap: 1.5rem;
 }
 .info-box h3 {
@@ -327,6 +334,46 @@ li a:hover::before {
   transform: scale(1.1);
 }
 
+/* =========================================
+   2. FIX HERO PER MOBILE (Sotto i 768px)
+   ========================================= */
+
+@media (max-width: 768px) {
+  /* 1. Forza il contenitore a diventare una COLONNA */
+  .about .about-container {
+    /* Usa lo stesso nome del Desktop */
+    flex-direction: column !important; /* Mette la foto sopra e il testo sotto */
+    gap: 3rem !important; /* Riduce lo spazio tra foto e testo */
+    text-align: center;
+    width: 100%;
+    align-items: center; /* Centra sia la foto che il testo nella colonna */
+  }
+
+  /* 2. Sistema la Foto sopra */
+  .about img {
+    width: 60vw !important; /* Ingrandisce la foto su telefono */
+    max-width: 250px;
+    height: auto;
+    margin: 0 auto; /* Centra la foto */
+    border-radius: 50%;
+  }
+
+  /* 3. Sistema il testo sotto */
+  .info-box {
+    align-items: center !important; /* Centra i bottoni e i social */
+    text-align: center !important; /* Centra le scritte */
+    gap: 1.2rem;
+    width: 100%;
+  }
+
+  /* Riduciamo un po' i font grandi per iPhone */
+  .info-box h1 {
+    font-size: 2.5rem !important; /* Rimpicciolisce "Your Name" */
+  }
+  .info-box h3 {
+    font-size: 1.3rem !important; /* Rimpicciolisce "Hi, I'm" */
+  }
+}
 /* =========================================
    4. SEZIONE EXPERIENCE - Versione Pulita
    ========================================= */
