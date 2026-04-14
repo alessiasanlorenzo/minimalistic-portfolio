@@ -198,22 +198,23 @@ li a:hover::before {
 /* --- STEP INTERMEDIO: Spremiamo l'header al massimo --- */
 @media (max-width: 1150px) {
   header {
-    gap: 0.5rem; /* Spazio ridotto all'osso tra le tre sezioni */
-    width: 98%; /* Sfrutta tutto lo schermo disponibile */
-    padding: 0.4rem 1rem;
+    gap: 0.4rem !important; /* Spazio minimo tra logo, link e bottone */
+    padding: 0.4rem 0.8rem !important;
+    width: 98% !important;
   }
 
   .nav-links {
-    gap: 0.8rem; /* Avvicina tantissimo i link tra loro */
+    gap: 0.5rem !important; /* I link si toccano quasi pur di stare insieme */
   }
 
   .nav-links a {
-    font-size: 0.9rem; /* Rimpicciolisce un po' il testo dei link */
+    font-size: 0.75rem !important; /* Testo molto piccolo per non uscire dai bordi */
+    letter-spacing: -0.02em; /* Stringe leggermente le lettere */
   }
 
   .header-btn-pc {
-    padding: 0.4rem 1rem; /* Rimpicciolisce il bottone */
-    font-size: 0.9rem;
+    padding: 0.3rem 0.7rem !important;
+    font-size: 0.75rem !important;
   }
 }
 /* Aumentiamo la soglia a 1400px: il menù scatta PRIMA che la barra si sballi! */
