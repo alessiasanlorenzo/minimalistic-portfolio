@@ -545,12 +545,13 @@ footer ul li a {
     font-size: 2rem;
     display: block;
   }
-  header.scrolled-nav .nav-links.active {
+  h/* Quando il menu è ATTIVO e l'header è scrolled (.scrolled-nav) */
+    header.scrolled-nav .nav-links.active {
     display: flex;
-    position: fixed;
-    top: 85px;
-    right: 20px;
-    left: auto;
+    position: absolute; /* FIX SAFARI: cambiato in absolute */
+    top: 75px; /* Lo spinge esattamente sotto al pallino */
+    right: 0; /* Allineato perfettamente al lato destro del pallino */
+    left: auto; /* Annulla impostazioni precedenti */
     width: 220px;
     background-color: rgba(0, 0, 0, 0.95);
     border-radius: 1.5rem;
@@ -558,7 +559,13 @@ footer ul li a {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     z-index: 999;
     text-align: left;
-    animation: fedeInDropdown 0.3s ease;
+
+    /* Fix extra per Safari: rimuove conflitti di sfocatura */
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+
+    /* Animazione */
+    animation: fadeInDropDown 0.3s ease;
   }
   header.scrolled-nav .nav-links.active li {
     margin-top: 0.8rem; /* Distanza tra i link ridotta */
