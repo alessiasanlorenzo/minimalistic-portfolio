@@ -182,7 +182,7 @@ li a:hover::before {
 
 /* --- 2. REGOLE MOBILE & TABLET --- */
 /* Aumentiamo la soglia a 1400px: il menù scatta PRIMA che la barra si sballi! */
-@media (max-width: 1400px) {
+@media (max-width: 1050px) {
   /* 1. Nascondiamo il bottone della barra PC */
   .header-btn-pc {
     display: none !important;
