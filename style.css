@@ -1,4 +1,11 @@
-/* =========================================
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden; /* Questo taglia la parte che esce fuori */
+  margin: 0;
+  padding: 0;
+  position: relative;
+} /* =========================================
    1. REGOLE GENERALI & UTILITIES
    ========================================= */
 * {
@@ -380,20 +387,42 @@ li a:hover::before {
 
 /* --- FIX PER MOBILE (Sotto i 768px) --- */
 @media (max-width: 768px) {
+  /* AGGIUNGI QUESTO: Blocca lo scorrimento laterale su tutto il sito */
+  html,
+  body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+  }
+
   .experience-info {
-    text-align: center; /* Titolo centrato (opzionale, puoi mettere left) */
+    text-align: center;
+    width: 100%; /* Assicura che il contenitore occupi tutto lo spazio per centrare */
+    display: block; /* O flex con align-items: center */
+    margin: 0 auto;
+  }
+  /* AGGIUNGI QUESTO: Assicurati che il titolo H2 non sia troppo grande */
+  .experience-info h2,
+  .title {
+    font-size: 2rem;
+    text-align: center;
+    width: 100%;
   }
 
   .grid {
-    grid-template-columns: 1fr; /* Una sola card per riga */
-    width: 90%; /* Evita che la card tocchi i bordi del telefono */
+    grid-template-columns: 1fr;
+    width: 90%;
     margin: 0 auto;
+    /* AGGIUNGI QUESTO: evita che la griglia crei spazio extra */
+    box-sizing: border-box;
   }
 
   .grid-card {
     padding: 2rem;
     align-items: flex-start !important;
     text-align: left !important;
+    max-width: 100%; /* AGGIUNGI QUESTO: evita che la card esca dai bordi */
+    box-sizing: border-box;
   }
 
   /* Questo risolve il problema del tuo screenshot su iPhone */
