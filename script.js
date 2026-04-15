@@ -23,7 +23,7 @@ window.addEventListener("resize", () => {
     navLinks.style.transition = "none"; // Uccide l'animazione durante il ridimensionamento
   }
 });
-// 1. Inizializzazione: incolla qui la tua PUBLIC KEY (quella che trovi in Account -> API Keys)
+// 1. Inizializzazione (La tua Key è corretta!)
 emailjs.init("Q8rHl4UA6uTYZFfAr");
 
 const contactForm = document.getElementById("contact-form");
@@ -31,29 +31,46 @@ const submitBtn = document.getElementById("submit-btn");
 
 if (contactForm) {
   contactForm.addEventListener("submit", function (event) {
+    // BLOCCA il ricaricamento della pagina (Fondamentale!)
     event.preventDefault();
 
-    // Cambia il testo del bottone per dare un feedback all'utente
-    submitBtn.innerText = "Invio in corso...";
+    console.log("Tentativo di invio in corso...");
 
-    // 2. I tuoi ID personali
-    const serviceID = "service_7uxfbv5"; // Questo lo abbiamo già
-    const templateID = "template_x2l30rw"; // Incolla qui quello che hai appena trovato
+    // Feedback visivo sul bottone
+    if (submitBtn) {
+      submitBtn.innerText = "Invio in corso...";
+      submitBtn.disabled = true; // Disabilita per evitare doppi click
+    }
 
-    // Invia il modulo
+    // 2. I tuoi ID (Service e Template sono corretti!)
+    const serviceID = "service_7uxfbv5";
+    const templateID = "template_x2l30rw";
+
+    // Invia il modulo tramite EmailJS
     emailjs.sendForm(serviceID, templateID, this).then(
       () => {
-        submitBtn.innerText = "Messaggio Inviato!";
+        console.log("Email inviata con successo!");
+        if (submitBtn) {
+          submitBtn.innerText = "Messaggio Inviato!";
+          submitBtn.disabled = false;
+        }
+
         contactForm.reset(); // Svuota i campi del form
 
         setTimeout(() => {
-          submitBtn.innerText = "Invia Messaggio";
+          if (submitBtn) submitBtn.innerText = "Send Message";
         }, 3000);
       },
       (err) => {
-        submitBtn.innerText = "Errore!";
+        console.log("Errore EmailJS:", err);
+        if (submitBtn) {
+          submitBtn.innerText = "Errore!";
+          submitBtn.disabled = false;
+        }
         alert("Si è verificato un errore: " + JSON.stringify(err));
       },
     );
   });
+} else {
+  console.error("Errore: Non ho trovato un form con id='contact-form'");
 }
