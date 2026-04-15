@@ -1,9 +1,7 @@
 const menuIcon = document.querySelector("#menu-icon");
-
 const navLinks = document.querySelector(".nav-links");
 
-// Aggiungiamo questa riga per selezionare tutti i link dentro la tendina
-
+// Questa l'avevi già preparata: seleziona tutti i link dentro la tendina
 const links = document.querySelectorAll(".nav-links a");
 
 // Apre o chiude il menù quando clicchi sull'hamburger
@@ -16,6 +14,18 @@ menuIcon.onclick = () => {
   navLinks.classList.toggle("active");
 };
 
+// --- NUOVA AGGIUNTA: Chiude il menù quando clicchi su una voce ---
+links.forEach((link) => {
+  link.addEventListener("click", () => {
+    // Mantiene l'animazione fluida anche in chiusura
+    navLinks.style.transition =
+      "opacity 0.4s ease, transform 0.4s ease, visibility 0.4s ease";
+    // Chiude la tendina
+    navLinks.classList.remove("active");
+  });
+});
+// -----------------------------------------------------------------
+
 // Chiude il menù e blocca l'animazione quando allarghi la finestra
 window.addEventListener("resize", () => {
   if (window.innerWidth > 768) {
@@ -23,7 +33,8 @@ window.addEventListener("resize", () => {
     navLinks.style.transition = "none"; // Uccide l'animazione durante il ridimensionamento
   }
 });
-// 1. Inizializzazione (La tua Key è corretta!)
+
+// 1. Inizializzazione EmailJS
 emailjs.init("Q8rHl4UA6uTYZFfAr");
 
 const contactForm = document.getElementById("contact-form");
@@ -42,7 +53,7 @@ if (contactForm) {
       submitBtn.disabled = true; // Disabilita per evitare doppi click
     }
 
-    // 2. I tuoi ID (Service e Template sono corretti!)
+    // 2. I tuoi ID
     const serviceID = "service_7uxfbv5";
     const templateID = "template_x2l30rw";
 
