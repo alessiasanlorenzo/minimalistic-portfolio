@@ -23,3 +23,37 @@ window.addEventListener("resize", () => {
     navLinks.style.transition = "none"; // Uccide l'animazione durante il ridimensionamento
   }
 });
+// 1. Inizializzazione: incolla qui la tua PUBLIC KEY (quella che trovi in Account -> API Keys)
+emailjs.init("Q8rHl4UA6uTYZFfAr");
+
+const contactForm = document.getElementById("contact-form");
+const submitBtn = document.getElementById("submit-btn");
+
+if (contactForm) {
+  contactForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    // Cambia il testo del bottone per dare un feedback all'utente
+    submitBtn.innerText = "Invio in corso...";
+
+    // 2. I tuoi ID personali
+    const serviceID = "service_7uxfbv5"; // Questo lo abbiamo già
+    const templateID = "template_x2l30rw"; // Incolla qui quello che hai appena trovato
+
+    // Invia il modulo
+    emailjs.sendForm(serviceID, templateID, this).then(
+      () => {
+        submitBtn.innerText = "Messaggio Inviato!";
+        contactForm.reset(); // Svuota i campi del form
+
+        setTimeout(() => {
+          submitBtn.innerText = "Invia Messaggio";
+        }, 3000);
+      },
+      (err) => {
+        submitBtn.innerText = "Errore!";
+        alert("Si è verificato un errore: " + JSON.stringify(err));
+      },
+    );
+  });
+}

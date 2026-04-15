@@ -164,20 +164,23 @@
     <section class="contact" id="contact">
       <h2 class="section-title">Contact <span>Me</span></h2>
 
-      <form
-        action="https://formspree.io/f/IL_TUO_ID"
-        method="POST"
-        class="contact-form"
-      >
+      <form id="contact-form" class="contact-form">
         <div class="contact-container">
           <div class="contact-inputs">
-            <input type="text" name="name" placeholder="Full Name" required />
+            <input
+              type="text"
+              name="from_name"
+              placeholder="Full Name"
+              required
+            />
+
             <input
               type="email"
-              name="email"
+              name="reply_to"
               placeholder="Email Address"
               required
             />
+
             <input type="text" name="subject" placeholder="Subject" />
           </div>
           <div class="contact-message">
@@ -190,7 +193,9 @@
         </div>
 
         <div class="contact-btn-group">
-          <button type="submit" class="btn">Send Message</button>
+          <button type="submit" class="btn" id="submit-btn">
+            Send Message
+          </button>
         </div>
       </form>
     </section>
