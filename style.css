@@ -293,6 +293,7 @@ header {
 
 .grid-card:hover span {
   background: none;
+  background-clip: border-box; /* AGGIUNGI QUESTA RIGA */
   -webkit-background-clip: border-box;
   color: #222222;
 }
