@@ -876,6 +876,32 @@ footer ul li a {
   .input-box input::placeholder {
     font-size: 1rem;
   }
+
+  /* 1. Spostiamo la linea tutta a sinistra */
+  .timeline-container::after {
+    left: 30px; /* Distanza fissa dal bordo sinistro */
+  }
+
+  /* 2. Spostiamo i pallini sopra la nuova posizione della linea */
+  .timeline-icon {
+    left: 30px;
+    transform: translateX(-50%);
+  }
+
+  /* 3. Facciamo sì che tutti i blocchi di testo occupino tutta la larghezza */
+  .timeline-item {
+    width: 100%;
+    left: 0 !important; /* Forza tutti a sinistra */
+    padding-left: 60px; /* Spazio per non coprire la linea col testo */
+    padding-right: 20px;
+    text-align: left !important;
+    align-items: flex-start !important;
+  }
+
+  /* 4. Sistemiamo i pallini verticalmente se necessario */
+  .timeline-icon {
+    top: 25px;
+  }
 }
 
 /* Timeline responsive */
