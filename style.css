@@ -578,6 +578,19 @@ header {
   padding: 20px 0;
 }
 
+/* Gli elementi dispari vanno a sinistra */
+.timeline-item:nth-child(odd) {
+  left: 0;
+  text-align: right;
+  align-items: flex-end;
+}
+
+/* Gli elementi pari vanno a destra */
+.timeline-item:nth-child(even) {
+  left: 50%;
+  text-align: left;
+  align-items: flex-start;
+}
 .timeline-container::after {
   content: "";
   position: absolute;
@@ -585,45 +598,35 @@ header {
   background-color: #ddd;
   top: 0;
   bottom: 0;
-  left: 20px;
+  /* Centra la linea: 50% meno metà della sua larghezza (1px) */
+  left: calc(50% - 1px);
 }
-
 /* --- AGGIORNARE QUESTI BLOCCHI NEL CSS --- */
 
 .timeline-item {
-  padding: 20px 0 20px 50px;
-
-  /* --- AGGIUNTA FONDAMENTALE --- */
-  position: relative; /* Serve per posizionare il nuovo spaziatore */
-
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
+  position: relative;
+  width: 50%; /* Occupa solo metà spazio */
+  padding: 20px 40px;
 }
 
 .timeline-icon {
   position: absolute;
-
-  /* Le dimensioni del tuo pallino */
   width: 14px;
   height: 14px;
-  border: 3px solid #733ca9; /* Il tuo bordo viola */
+  background-color: #222222; /* Il tuo grigio esatto */
+  border: 3px solid #733ca9;
   border-radius: 50%;
 
-  /* 1. IL CENTRAMENTO MATEMATICO PERFETTO */
-  /* Questo fa sì che il centro del pallino coincida esattamente con il centro della linea bianca */
-  left: 14px;
+  /* POSIZIONAMENTO DINAMICO */
+  left: 50%;
+  transform: translateX(-50%);
+
   top: 25px;
+  z-index: 2;
 
-  /* 2. IN PRIMO PIANO */
-  z-index: 2; /* Assicura che il pallino copra fisicamente la linea */
-
-  /* 3. L'INTERNO DEL PALLINO */
-  /* Questo è il segreto: devi inserire qui il colore HEX ESATTO del tuo sfondo scuro.
-     Se il colore è identico al millimetro, la linea bianca sotto sparirà per magia senza lasciare "toppe" visibili. */
-  background-color: #222222; /* <-- Sostituisci #222222 con il tuo grigio scuro esatto! */
+  /* LO SPAZIO CHE SPEZZA LA LINEA */
+  /* Questo crea l'effetto dell'immagine arancione che volevi */
+  box-shadow: 0 0 0 6px #222222;
 }
 
 .timeline-date {
