@@ -42,40 +42,49 @@ const submitBtn = document.getElementById("submit-btn");
 
 if (contactForm) {
   contactForm.addEventListener("submit", function (event) {
-    // BLOCCA il ricaricamento della pagina (Fondamentale!)
     event.preventDefault();
-
     console.log("Tentativo di invio in corso...");
 
-    // Feedback visivo sul bottone
+    // 1. INIZIA L'ANIMAZIONE: Testo e classe "sending"
     if (submitBtn) {
       submitBtn.innerText = "Invio in corso...";
-      submitBtn.disabled = true; // Disabilita per evitare doppi click
+      submitBtn.disabled = true;
+      submitBtn.classList.remove("sent"); // Assicura che parta da zero
+      submitBtn.classList.add("sending"); // Fa partire la barra fino all'80%
     }
 
-    // 2. I tuoi ID
     const serviceID = "service_7uxfbv5";
     const templateID = "template_x2l30rw";
 
-    // Invia il modulo tramite EmailJS
     emailjs.sendForm(serviceID, templateID, this).then(
       () => {
         console.log("Email inviata con successo!");
+
+        // 2. SUCCESSO: Testo e classe "sent" (riempie al 100%)
         if (submitBtn) {
           submitBtn.innerText = "Messaggio Inviato!";
+          submitBtn.classList.remove("sending");
+          submitBtn.classList.add("sent");
           submitBtn.disabled = false;
         }
 
-        contactForm.reset(); // Svuota i campi del form
+        contactForm.reset();
 
+        // 3. DOPO 3 SECONDI: Torna tutto normale
         setTimeout(() => {
-          if (submitBtn) submitBtn.innerText = "Send Message";
+          if (submitBtn) {
+            submitBtn.innerText = "Send Message";
+            submitBtn.classList.remove("sending", "sent"); // Svuota il colore
+          }
         }, 3000);
       },
       (err) => {
         console.log("Errore EmailJS:", err);
+
+        // ERRORE: Blocca l'animazione e avvisa
         if (submitBtn) {
           submitBtn.innerText = "Errore!";
+          submitBtn.classList.remove("sending"); // Ferma l'animazione
           submitBtn.disabled = false;
         }
         alert("Si è verificato un errore: " + JSON.stringify(err));

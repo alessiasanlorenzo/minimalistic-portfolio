@@ -477,6 +477,37 @@ header {
   font-size: 4rem;
   transform: translate(50%, -50%);
 }
+/* --- ANIMAZIONE BOTTONE INVIO --- */
+#submit-btn {
+  position: relative;
+  overflow: hidden;
+  z-index: 1; /* Tiene il testo in primo piano */
+}
+
+/* Il livello colorato che fa da "barra di caricamento" */
+#submit-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%; /* Inizia vuoto */
+  height: 100%;
+  /* SOSTITUISCI QUESTO COLORE CON QUELLO DEL TUO BOTTONE GITHUB */
+  background: linear-gradient(to right, rgb(255, 0, 255), rgb(0, 157, 255));
+  z-index: -1; /* Sta dietro al testo */
+  transition: width 1.5s ease-out; /* Velocità di riempimento */
+}
+
+/* Stato 1: Invio in corso (si riempie fino all'80%) */
+#submit-btn.sending::before {
+  width: 80%;
+}
+
+/* Stato 2: Messaggio inviato (si riempie al 100%) */
+#submit-btn.sent::before {
+  width: 100%;
+  transition: width 0.3s ease-in; /* Scatto rapido per completare */
+}
 
 /* =========================================
    9. TIMELINE EDUCATION
