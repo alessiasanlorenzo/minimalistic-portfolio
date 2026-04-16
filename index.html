@@ -167,28 +167,27 @@
       <form id="contact-form" class="contact-form">
         <div class="contact-container">
           <div class="contact-inputs">
-            <input
-              type="text"
-              name="from_name"
-              placeholder="Full Name"
-              required
-            />
+            <div class="floating-input">
+              <input type="text" id="from_name" name="from_name" required />
+              <label for="from_name">Full Name</label>
+            </div>
 
-            <input
-              type="email"
-              name="reply_to"
-              placeholder="Email Address"
-              required
-            />
+            <div class="floating-input">
+              <input type="email" id="reply_to" name="reply_to" required />
+              <label for="reply_to">Email Address</label>
+            </div>
 
-            <input type="text" name="subject" placeholder="Subject" />
+            <div class="floating-input">
+              <input type="text" id="subject" name="subject" required />
+              <label for="subject">Subject</label>
+            </div>
           </div>
+
           <div class="contact-message">
-            <textarea
-              name="message"
-              placeholder="Your Message"
-              required
-            ></textarea>
+            <div class="floating-input">
+              <textarea id="message" name="message" required></textarea>
+              <label for="message">Your Message</label>
+            </div>
           </div>
         </div>
 

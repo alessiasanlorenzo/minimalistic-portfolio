@@ -20,6 +20,8 @@ body {
   position: relative;
   scroll-behavior: smooth;
   scroll-padding-top: 120px;
+  background-color: #222222;
+  color: white;
 }
 
 /* Scrollbar personalizzata */
@@ -28,11 +30,11 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background-color: rgb(219, 219, 219);
+  background-color: rgb(51, 51, 51);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #009dff, #ff00ff);
+  background: linear-gradient(to bottom, #733ca9, #b566d2);
 }
 
 /* =========================================
@@ -62,18 +64,20 @@ section:first-of-type {
 
 .btn {
   padding: 0.5rem 1.5rem;
-  border: 2px solid black;
+  border: 2px solid #733ca9;
   border-radius: 3rem;
   font-weight: 500;
-  color: black;
+  color: white;
+  background-color: rgb(51, 51, 51);
   white-space: nowrap;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 }
 
 .btn:hover {
-  background-color: black;
+  background-color: #733ca9;
   color: white;
+  border-color: #733ca9;
 }
 
 /* =========================================
@@ -90,7 +94,7 @@ header {
   width: 95%;
   max-width: 1100px;
   padding: 0.5rem 1.5rem;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgb(51, 51, 51);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-radius: 3rem;
@@ -130,7 +134,7 @@ header {
   width: 0;
   height: 5px;
   border-radius: 1rem;
-  background: linear-gradient(to right, rgb(0, 157, 255), rgb(255, 0, 255));
+  background: linear-gradient(to right, #733ca9, #b566d2);
   transition: width 0.3s ease-in-out;
 }
 
@@ -147,7 +151,7 @@ header {
   font-size: 1rem;
   font-weight: 500;
   color: white;
-  background: linear-gradient(to right, rgb(0, 157, 255), rgb(255, 0, 255));
+  background: linear-gradient(to right, #733ca9, #b566d2);
   white-space: nowrap;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
@@ -155,7 +159,7 @@ header {
 
 .visit-btn:hover,
 .nav-links li .visit-btn:hover {
-  background: linear-gradient(to right, rgb(255, 0, 255), rgb(0, 157, 255));
+  background: linear-gradient(to right, #b566d2, #733ca9);
   transform: scale(1.03);
 }
 
@@ -197,6 +201,7 @@ header {
   object-fit: cover;
   position: relative;
   z-index: 10;
+  border: #733ca9 solid 2px;
 }
 
 .info-box {
@@ -221,7 +226,7 @@ header {
 
 .info-box span {
   font-size: 2rem;
-  background: linear-gradient(to right, rgb(255, 0, 255), rgb(0, 157, 255));
+  background: linear-gradient(to right, #733ca9, #b566d2);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -273,7 +278,7 @@ header {
   flex-direction: column;
   align-items: flex-start;
   padding: 3rem;
-  border: 2px solid black;
+  border: 2px solid #733ca9;
   border-radius: 3rem;
   text-align: left;
   cursor: pointer;
@@ -281,9 +286,15 @@ header {
 }
 
 .grid-card:hover {
-  background-color: black;
+  background-color: #733ca9;
   color: white;
   transform: scale(1.02);
+}
+
+.grid-card:hover span {
+  background: none;
+  -webkit-background-clip: border-box;
+  color: #222222;
 }
 
 .grid-card i {
@@ -294,7 +305,7 @@ header {
 .grid-card span {
   font-size: 1.5rem;
   font-weight: 500;
-  background: linear-gradient(to right, #009dff, #ff00ff);
+  background: linear-gradient(to right, #733ca9, #b566d2);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -321,7 +332,7 @@ header {
   align-items: center;
   justify-content: center;
   padding: 3rem 2rem;
-  border: 2px solid black;
+  border: 2px solid #733ca9;
   border-radius: 3rem;
   gap: 1.5rem;
   text-align: center;
@@ -330,7 +341,7 @@ header {
 }
 
 .projects-card:hover {
-  background-color: black;
+  background-color: #222222;
   color: white;
   transform: translateY(-10px) scale(1.02);
 }
@@ -351,9 +362,9 @@ header {
 }
 
 .projects-card .btn:hover {
-  border: 2px solid white;
-  background-color: white;
-  color: black;
+  border: 2px solid #733ca9;
+  background-color: #733ca9;
+  color: white;
 }
 
 /* =========================================
@@ -386,34 +397,82 @@ header {
   gap: 1.5rem;
 }
 
-.contact-inputs input,
-.contact-message textarea {
+.contact-message {
+  display: flex;
+}
+
+/* =========================================
+   NUOVI STILI PER INPUT FLUTTUANTI (CONTACT FORM)
+   ========================================= */
+
+/* Contenitore di ogni singolo campo */
+.floating-input {
+  position: relative;
+  width: 100%;
+}
+
+/* Serve per far espandere il campo messaggio fino in fondo */
+.contact-message .floating-input {
+  height: 100%;
+}
+
+/* Stile base di Input e Textarea (Mantiene il tuo design originale) */
+.floating-input input,
+.floating-input textarea {
   width: 100%;
   padding: 1.2rem;
-  border: 2px solid black;
+  border: 2px solid #733ca9;
   border-radius: 1rem;
   font-family: "Poppins", sans-serif;
   font-size: 1rem;
-  color: black;
+  color: var(--text-color); /* Si adatta alla tua dark mode! */
   background: transparent;
   outline: none;
   transition: all 0.3s ease;
 }
 
-.contact-message {
-  display: flex;
-}
-
-.contact-message textarea {
+/* Altezza fissa solo per la textarea */
+.floating-input textarea {
   height: 100%;
   min-height: 250px;
   resize: none;
 }
 
-.contact-inputs input:focus,
-.contact-message textarea:focus {
-  border-color: #009dff;
-  box-shadow: 0 0 8px rgba(0, 157, 255, 0.2);
+/* Effetto focus (La tua ombra viola) */
+.floating-input input:focus,
+.floating-input textarea:focus {
+  border-color: #733ca9;
+  box-shadow: 0 0 8px rgba(115, 60, 169, 0.3);
+}
+
+/* --- ANIMAZIONE DELLA SCRITTA --- */
+.floating-input label {
+  position: absolute;
+  left: 1.2rem;
+  top: 1.2rem;
+  color: #888;
+  pointer-events: none;
+  transition: 0.3s ease all;
+
+  /* LA SOLUZIONE È QUI: Sfondo solido! */
+  /* Ho inserito #222222 (il grigio scuro che usi nei bottoni). 
+     Se il tuo sfondo è diverso, metti il codice colore esatto del tuo sfondo qui! */
+  background-color: #222222;
+
+  padding: 0 0.4rem; /* Crea lo spazietto a destra e sinistra della parola */
+  border-radius: 0.2rem;
+}
+
+/* Quando clicchi o c'è testo dentro */
+.floating-input input:focus ~ label,
+.floating-input input:valid ~ label,
+.floating-input textarea:focus ~ label,
+.floating-input textarea:valid ~ label {
+  top: 0;
+  transform: translateY(-50%);
+  font-size: 0.85rem;
+  color: #733ca9;
+  z-index: 10; /* FONDAMENTALE: Forza la scritta a stare "sopra" la riga viola */
 }
 
 .contact-btn-group {
@@ -425,18 +484,18 @@ header {
 
 .contact-btn-group .btn {
   padding: 1rem 3rem;
-  border: 2px solid black;
+  border: 2px solid #733ca9;
   border-radius: 3rem;
   font-size: 1.1rem;
   font-weight: 600;
-  color: black;
-  background-color: transparent;
+  color: white;
+  background-color: #222222;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
 
 .contact-btn-group .btn:hover {
-  background-color: black;
+  background-color: #733ca9;
   color: white;
   transform: scale(1.05);
 }
@@ -457,7 +516,7 @@ header {
   width: 100%;
   max-width: 100%;
   padding: 1rem 2rem;
-  border: 2px solid black;
+  border: 2px solid #733ca9;
   border-radius: 3rem;
   font-size: 1rem;
 }
@@ -493,7 +552,7 @@ header {
   width: 0%; /* Inizia vuoto */
   height: 100%;
   /* SOSTITUISCI QUESTO COLORE CON QUELLO DEL TUO BOTTONE GITHUB */
-  background: linear-gradient(to right, rgb(255, 0, 255), rgb(0, 157, 255));
+  background: linear-gradient(to right, #733ca9, #b566d2);
   z-index: -1; /* Sta dietro al testo */
   transition: width 1.5s ease-out; /* Velocità di riempimento */
 }
@@ -529,9 +588,14 @@ header {
   left: 20px;
 }
 
+/* --- AGGIORNARE QUESTI BLOCCHI NEL CSS --- */
+
 .timeline-item {
   padding: 20px 0 20px 50px;
-  position: relative;
+
+  /* --- AGGIUNTA FONDAMENTALE --- */
+  position: relative; /* Serve per posizionare il nuovo spaziatore */
+
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -541,14 +605,25 @@ header {
 
 .timeline-icon {
   position: absolute;
+
+  /* Le dimensioni del tuo pallino */
   width: 14px;
   height: 14px;
-  background-color: #000;
-  border: 3px solid #007bff;
+  border: 3px solid #733ca9; /* Il tuo bordo viola */
   border-radius: 50%;
-  left: 13px;
+
+  /* 1. IL CENTRAMENTO MATEMATICO PERFETTO */
+  /* Questo fa sì che il centro del pallino coincida esattamente con il centro della linea bianca */
+  left: 14px;
   top: 25px;
-  z-index: 2;
+
+  /* 2. IN PRIMO PIANO */
+  z-index: 2; /* Assicura che il pallino copra fisicamente la linea */
+
+  /* 3. L'INTERNO DEL PALLINO */
+  /* Questo è il segreto: devi inserire qui il colore HEX ESATTO del tuo sfondo scuro.
+     Se il colore è identico al millimetro, la linea bianca sotto sparirà per magia senza lasciare "toppe" visibili. */
+  background-color: #222222; /* <-- Sostituisci #222222 con il tuo grigio scuro esatto! */
 }
 
 .timeline-date {
@@ -556,7 +631,7 @@ header {
 }
 
 .timeline-date h3 {
-  color: #000;
+  color: white;
   font-size: 1.1rem;
   font-weight: bold;
 }
@@ -568,7 +643,7 @@ header {
 }
 
 .timeline-content h3 {
-  color: #000;
+  color: white;
   font-size: 1.2rem;
   margin: 5px 0;
 }
@@ -599,7 +674,7 @@ footer ul {
 }
 
 footer ul li a {
-  color: black;
+  color: #222222;
   font-weight: 600;
 }
 
@@ -735,7 +810,7 @@ footer ul li a {
     max-width: 350px;
     margin: 0;
     padding: 1.5rem 0;
-    background: rgba(0, 0, 0, 0.9);
+    background: rgba(34, 34, 34, 0.95);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-radius: 2rem;
