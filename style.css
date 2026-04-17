@@ -786,12 +786,14 @@ footer ul li a {
   }
 }
 
-/* --- NUOVA SEZIONE RESUME (Pulisci tutto il vecchio e metti questo) --- */
+/* --- NUOVA SEZIONE RESUME (Education & Experience) --- */
 
 .resume-row {
   display: flex;
   flex-wrap: wrap;
   gap: 5rem;
+  padding-left: 3rem;
+  /* Padding fisso di 3rem che rimane costante su tutti i device */
 }
 
 .resume-column {
@@ -806,12 +808,14 @@ footer ul li a {
 /* La linea verticale ora è un semplice bordo */
 .resume-box {
   border-left: 0.2rem solid #733ca9;
+  margin-left: 0;
 }
 
 .resume-box .timeline-item {
   position: relative;
   padding-left: 3rem;
   margin-bottom: 2rem;
+  margin-left: 0;
 }
 
 /* Il nuovo pallino 'calamitato' al bordo sinistro */
@@ -819,7 +823,8 @@ footer ul li a {
   content: "";
   position: absolute;
   top: 0;
-  left: -1.1rem; /* Metà esatta della larghezza per coprire la linea */
+  left: -1.1rem;
+  /* Metà esatta della larghezza per coprire la linea */
   width: 2rem;
   height: 2rem;
   background: #733ca9;
@@ -838,4 +843,31 @@ footer ul li a {
   font-size: 1.5rem;
   color: #666;
   padding-bottom: 0.5rem;
+}
+
+/*
+  Media
+  queries
+  -
+  MANTIENE
+  IL
+  PADDING
+  FISSO
+  SU
+  TUTTI
+  I
+  DEVICE
+  */
+@media (max-width: 768px) {
+  .resume-row {
+    padding-left: 3rem;
+    /* Rimane sempre 3rem anche su tablet e mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .resume-row {
+    padding-left: 3rem;
+    /* Rimane sempre 3rem anche su smartphone */
+  }
 }
