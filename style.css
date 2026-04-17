@@ -544,6 +544,9 @@ footer ul li a {
   .input-box i {
     font-size: 2.5rem;
   }
+  .resume{
+    padding: 80px 40px;
+  }
 }
 
 /* Tablet (1150px) */
@@ -720,6 +723,19 @@ footer ul li a {
   .input-box input::placeholder {
     font-size: 1rem;
   }
+
+  .resume-row {
+    flex-direction: column;
+    margin-bottom: 50px;
+  }
+
+  .resume-row .wrapper {
+    width: 100% !important;
+  }
+
+  .resume-row .wrapper:nth-child(1) {
+    margin-right: 0;
+  }
 }
 
 /* Mobile (600px) */
@@ -796,55 +812,78 @@ footer ul li a {
   /* Padding fisso di 3rem che rimane costante su tutti i device */
 }
 
-.resume-column {
-  flex: 1 1 40rem;
+.resume-row {
+  display: flex;
 }
 
-.resume-column .title {
-  font-size: 2.5rem;
-  margin: 3rem 0 1.5rem 2rem;
+.resume-row .wrapper:nth-child(1) {
+  width: 65%;
+  margin-right: 40px;
 }
 
-/* La linea verticale ora è un semplice bordo */
-.resume-box {
-  border-left: 0.2rem solid #733ca9;
-  margin-left: 0;
+.resume-row .wrapper :is(.edu, .exp) {
+  margin-bottom: 80px;
 }
 
-.resume-box .timeline-item {
+.resume-row h2 {
+  margin-bottom: 20px;
+}
+
+.resume-row .grid-item {
   position: relative;
-  padding-left: 3rem;
-  margin-bottom: 2rem;
-  margin-left: 0;
+  grid-template-columns: 0.5fr 1fr;
+  grid-gap: 0px 50px;
+  margin-bottom: 20px;
 }
 
-/* Il nuovo pallino 'calamitato' al bordo sinistro */
-.resume-box .timeline-item::before {
-  content: "";
+.resume-row .grid-item .year {
+  text-align: right;
+  font-size: var(--font-size-14);
+}
+.resume-row .grid-item .company {
+  text-align: right;
+  font-size: var(--font-size-12);
+  color: white);
+}
+
+.resume-row .grid-item :is(.edu-desc, .exp-desc) {
+  font-size: var(--font-size-13);
+  color: white;
+}
+.resume-row .grid-item .divider {
   position: absolute;
   top: 0;
-  left: -1.1rem;
-  /* Metà esatta della larghezza per coprire la linea */
-  width: 2rem;
-  height: 2rem;
+  left: 34.5%;
+  width: 1px;
+  height: calc(100% + 40px);
   background: #733ca9;
-  box-shadow: 0 0 0.5rem #733ca9;
-  border-radius: 50%;
 }
 
-.timeline-content .content {
-  padding: 1.5rem;
-  border: 0.2rem solid #222222;
-  border-radius: 0.6rem;
-  margin-bottom: 2rem;
+.resume-row .grid-item .divider::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: -3px;
+  width: 8px;
+  height: 8px;
+  border-radius: 10px;
+  background: #222222;
+  box-shadow: 0 0 0 2px #733ca9;
 }
 
-.timeline-content .content .year {
-  font-size: 1.5rem;
-  color: #666;
-  padding-bottom: 0.5rem;
+.section-subtitle {
+  font-size: var(--font-size-14);
+  text-align: right;
+  font-weight: 300;
+  color: var(--color-white-70);
+  margin-bottom: 40px;
 }
 
+.grid-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 30px;
+}
 /*
   Media
   queries
