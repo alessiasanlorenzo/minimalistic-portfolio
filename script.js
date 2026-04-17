@@ -94,3 +94,54 @@ if (contactForm) {
 } else {
   console.error("Errore: Non ho trovato un form con id='contact-form'");
 }
+// =========================================
+// GESTIONE TEMA (DARK / LIGHT MODE)
+// =========================================
+const themeToggle = document.getElementById("theme-toggle");
+
+// 1. Controlla se l'utente ha già salvato una preferenza o controlla il sistema
+const currentTheme = localStorage.getItem("theme");
+const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+// Funzione principale per applicare il tema e cambiare l'icona
+const applyTheme = (theme) => {
+  if (theme === "light") {
+    document.body.classList.add("light-mode");
+    themeToggle.classList.replace("fa-moon", "fa-sun");
+  } else {
+    document.body.classList.remove("light-mode");
+    themeToggle.classList.replace("fa-sun", "fa-moon");
+  }
+};
+
+// Applica il tema al caricamento della pagina
+if (currentTheme) {
+  // Se c'è un salvataggio, usalo
+  applyTheme(currentTheme);
+} else if (!prefersDarkScheme.matches) {
+  // Se non c'è salvataggio e il sistema è su "light", usa light
+  applyTheme("light");
+}
+
+// 2. Al click del pulsante, cambia il tema e salva la scelta
+themeToggle.addEventListener("click", () => {
+  let theme = "dark";
+
+  // Se il body NON ha la classe light-mode, significa che stiamo passando a light
+  if (!document.body.classList.contains("light-mode")) {
+    theme = "light";
+  }
+
+  applyTheme(theme);
+  // Salva la scelta nel browser
+  localStorage.setItem("theme", theme);
+});
+
+// Opzionale: Ascolta i cambiamenti di tema del sistema in tempo reale
+prefersDarkScheme.addEventListener("change", (e) => {
+  // Cambia solo se l'utente non ha impostato una preferenza manuale
+  if (!localStorage.getItem("theme")) {
+    const newTheme = e.matches ? "dark" : "light";
+    applyTheme(newTheme);
+  }
+});
